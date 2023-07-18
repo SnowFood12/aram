@@ -16,5 +16,10 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            //MÁ SAO PUSH MÃI KHÔNG ĐƯỢC TA
+        }
     }
 }
