@@ -19,7 +19,7 @@ namespace asm_DangKi
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
-            //MÁ SAO PUSH MÃI KHÔNG ĐƯỢC TA
+            //MÁ SAO PUSH MÃI KHÔNG ĐƯỢC TAÂSASA
         }
     }
 }
