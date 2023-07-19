@@ -38,6 +38,8 @@
             this.btn_TaoHoaDon = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txt_HangTonKho = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.txt_SoLuong = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_TongTien = new System.Windows.Forms.TextBox();
@@ -63,6 +65,7 @@
             this.txt_DiaChiDoiTacThanhToan = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.txt_TenDoiTac = new System.Windows.Forms.TextBox();
             this.txt_SDTDoiTacThanhToan = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dtm_NgayGiaoDich = new System.Windows.Forms.DateTimePicker();
@@ -71,25 +74,21 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txt_TongTienCanThanhToan = new System.Windows.Forms.TextBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lstv_ThongTinSanPhamTrongDonHang = new System.Windows.Forms.ListView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lstv_DonHangThanhToan = new System.Windows.Forms.ListView();
             this.btn_ThanhToan = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txt_TenDoiTac = new System.Windows.Forms.TextBox();
-            this.dtm_TimKiemGiaoDich = new System.Windows.Forms.DateTimePicker();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btn_XoaLichSuGiaoDich = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
+            this.dtm_TimKiemGiaoDich = new System.Windows.Forms.DateTimePicker();
             this.btn_TimKiemGiaoDich = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.lstv_ThongTinGiaoDich = new System.Windows.Forms.ListView();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.lstv_ThongTinSanPhamDaGiaoDich = new System.Windows.Forms.ListView();
-            this.btn_XoaLichSuGiaoDich = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txt_HangTonKho = new System.Windows.Forms.TextBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.lstv_ThongTinSanPhamTrongDonHang = new System.Windows.Forms.ListView();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lstv_ThongTinGiaoDich = new System.Windows.Forms.ListView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -100,12 +99,12 @@
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -113,7 +112,6 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -221,6 +219,24 @@
             this.label3.Size = new System.Drawing.Size(101, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Tổng tiền";
+            // 
+            // txt_HangTonKho
+            // 
+            this.txt_HangTonKho.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_HangTonKho.Location = new System.Drawing.Point(873, 96);
+            this.txt_HangTonKho.Name = "txt_HangTonKho";
+            this.txt_HangTonKho.ReadOnly = true;
+            this.txt_HangTonKho.Size = new System.Drawing.Size(228, 32);
+            this.txt_HangTonKho.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(647, 99);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 26);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Tồn kho";
             // 
             // txt_SoLuong
             // 
@@ -476,6 +492,14 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Địa chỉ";
             // 
+            // txt_TenDoiTac
+            // 
+            this.txt_TenDoiTac.Location = new System.Drawing.Point(260, 64);
+            this.txt_TenDoiTac.Name = "txt_TenDoiTac";
+            this.txt_TenDoiTac.ReadOnly = true;
+            this.txt_TenDoiTac.Size = new System.Drawing.Size(210, 32);
+            this.txt_TenDoiTac.TabIndex = 1;
+            // 
             // txt_SDTDoiTacThanhToan
             // 
             this.txt_SDTDoiTacThanhToan.Location = new System.Drawing.Point(260, 118);
@@ -554,6 +578,28 @@
             this.txt_TongTienCanThanhToan.Size = new System.Drawing.Size(249, 32);
             this.txt_TongTienCanThanhToan.TabIndex = 1;
             // 
+            // groupBox11
+            // 
+            this.groupBox11.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.groupBox11.Controls.Add(this.lstv_ThongTinSanPhamTrongDonHang);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(41, 553);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(1281, 206);
+            this.groupBox11.TabIndex = 2;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Thông tin sản phẩm trong đơn hàng";
+            // 
+            // lstv_ThongTinSanPhamTrongDonHang
+            // 
+            this.lstv_ThongTinSanPhamTrongDonHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstv_ThongTinSanPhamTrongDonHang.HideSelection = false;
+            this.lstv_ThongTinSanPhamTrongDonHang.Location = new System.Drawing.Point(3, 32);
+            this.lstv_ThongTinSanPhamTrongDonHang.Name = "lstv_ThongTinSanPhamTrongDonHang";
+            this.lstv_ThongTinSanPhamTrongDonHang.Size = new System.Drawing.Size(1275, 171);
+            this.lstv_ThongTinSanPhamTrongDonHang.TabIndex = 0;
+            this.lstv_ThongTinSanPhamTrongDonHang.UseCompatibleStateImageBehavior = false;
+            // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.LightSeaGreen;
@@ -598,32 +644,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Lịch sử giao dịch";
             // 
-            // tabPage3
+            // groupBox10
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 38);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1372, 805);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Doanh thu";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.groupBox10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox10.Controls.Add(this.btn_XoaLichSuGiaoDich);
+            this.groupBox10.Controls.Add(this.label17);
+            this.groupBox10.Controls.Add(this.dtm_TimKiemGiaoDich);
+            this.groupBox10.Controls.Add(this.btn_TimKiemGiaoDich);
+            this.groupBox10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.groupBox10.Location = new System.Drawing.Point(50, 62);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(1278, 125);
+            this.groupBox10.TabIndex = 10;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Chức năng";
             // 
-            // txt_TenDoiTac
+            // btn_XoaLichSuGiaoDich
             // 
-            this.txt_TenDoiTac.Location = new System.Drawing.Point(260, 64);
-            this.txt_TenDoiTac.Name = "txt_TenDoiTac";
-            this.txt_TenDoiTac.ReadOnly = true;
-            this.txt_TenDoiTac.Size = new System.Drawing.Size(210, 32);
-            this.txt_TenDoiTac.TabIndex = 1;
-            // 
-            // dtm_TimKiemGiaoDich
-            // 
-            this.dtm_TimKiemGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtm_TimKiemGiaoDich.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtm_TimKiemGiaoDich.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtm_TimKiemGiaoDich.Location = new System.Drawing.Point(305, 60);
-            this.dtm_TimKiemGiaoDich.Name = "dtm_TimKiemGiaoDich";
-            this.dtm_TimKiemGiaoDich.Size = new System.Drawing.Size(249, 36);
-            this.dtm_TimKiemGiaoDich.TabIndex = 7;
+            this.btn_XoaLichSuGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_XoaLichSuGiaoDich.Location = new System.Drawing.Point(880, 60);
+            this.btn_XoaLichSuGiaoDich.Name = "btn_XoaLichSuGiaoDich";
+            this.btn_XoaLichSuGiaoDich.Size = new System.Drawing.Size(242, 36);
+            this.btn_XoaLichSuGiaoDich.TabIndex = 8;
+            this.btn_XoaLichSuGiaoDich.Text = "Xoá lịch sử giao dịch";
+            this.btn_XoaLichSuGiaoDich.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -635,6 +679,16 @@
             this.label17.TabIndex = 6;
             this.label17.Text = "Ngày giao dịch";
             // 
+            // dtm_TimKiemGiaoDich
+            // 
+            this.dtm_TimKiemGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtm_TimKiemGiaoDich.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtm_TimKiemGiaoDich.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dtm_TimKiemGiaoDich.Location = new System.Drawing.Point(305, 60);
+            this.dtm_TimKiemGiaoDich.Name = "dtm_TimKiemGiaoDich";
+            this.dtm_TimKiemGiaoDich.Size = new System.Drawing.Size(249, 36);
+            this.dtm_TimKiemGiaoDich.TabIndex = 7;
+            // 
             // btn_TimKiemGiaoDich
             // 
             this.btn_TimKiemGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -644,28 +698,6 @@
             this.btn_TimKiemGiaoDich.TabIndex = 8;
             this.btn_TimKiemGiaoDich.Text = "Tìm kiếm";
             this.btn_TimKiemGiaoDich.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.groupBox8.Controls.Add(this.lstv_ThongTinGiaoDich);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(50, 215);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1281, 254);
-            this.groupBox8.TabIndex = 9;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Thông tin giao dịch";
-            // 
-            // lstv_ThongTinGiaoDich
-            // 
-            this.lstv_ThongTinGiaoDich.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstv_ThongTinGiaoDich.HideSelection = false;
-            this.lstv_ThongTinGiaoDich.Location = new System.Drawing.Point(3, 32);
-            this.lstv_ThongTinGiaoDich.Name = "lstv_ThongTinGiaoDich";
-            this.lstv_ThongTinGiaoDich.Size = new System.Drawing.Size(1275, 219);
-            this.lstv_ThongTinGiaoDich.TabIndex = 0;
-            this.lstv_ThongTinGiaoDich.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox9
             // 
@@ -689,70 +721,27 @@
             this.lstv_ThongTinSanPhamDaGiaoDich.TabIndex = 0;
             this.lstv_ThongTinSanPhamDaGiaoDich.UseCompatibleStateImageBehavior = false;
             // 
-            // btn_XoaLichSuGiaoDich
+            // groupBox8
             // 
-            this.btn_XoaLichSuGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_XoaLichSuGiaoDich.Location = new System.Drawing.Point(880, 60);
-            this.btn_XoaLichSuGiaoDich.Name = "btn_XoaLichSuGiaoDich";
-            this.btn_XoaLichSuGiaoDich.Size = new System.Drawing.Size(242, 36);
-            this.btn_XoaLichSuGiaoDich.TabIndex = 8;
-            this.btn_XoaLichSuGiaoDich.Text = "Xoá lịch sử giao dịch";
-            this.btn_XoaLichSuGiaoDich.UseVisualStyleBackColor = true;
+            this.groupBox8.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.groupBox8.Controls.Add(this.lstv_ThongTinGiaoDich);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(50, 215);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(1281, 254);
+            this.groupBox8.TabIndex = 9;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Thông tin giao dịch";
             // 
-            // groupBox10
+            // lstv_ThongTinGiaoDich
             // 
-            this.groupBox10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox10.Controls.Add(this.btn_XoaLichSuGiaoDich);
-            this.groupBox10.Controls.Add(this.label17);
-            this.groupBox10.Controls.Add(this.dtm_TimKiemGiaoDich);
-            this.groupBox10.Controls.Add(this.btn_TimKiemGiaoDich);
-            this.groupBox10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox10.Location = new System.Drawing.Point(50, 62);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(1278, 125);
-            this.groupBox10.TabIndex = 10;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Chức năng";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(647, 99);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(89, 26);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Tồn kho";
-            // 
-            // txt_HangTonKho
-            // 
-            this.txt_HangTonKho.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_HangTonKho.Location = new System.Drawing.Point(873, 96);
-            this.txt_HangTonKho.Name = "txt_HangTonKho";
-            this.txt_HangTonKho.ReadOnly = true;
-            this.txt_HangTonKho.Size = new System.Drawing.Size(228, 32);
-            this.txt_HangTonKho.TabIndex = 1;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.groupBox11.Controls.Add(this.lstv_ThongTinSanPhamTrongDonHang);
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(41, 553);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(1281, 206);
-            this.groupBox11.TabIndex = 2;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Thông tin sản phẩm trong đơn hàng";
-            // 
-            // lstv_ThongTinSanPhamTrongDonHang
-            // 
-            this.lstv_ThongTinSanPhamTrongDonHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstv_ThongTinSanPhamTrongDonHang.HideSelection = false;
-            this.lstv_ThongTinSanPhamTrongDonHang.Location = new System.Drawing.Point(3, 32);
-            this.lstv_ThongTinSanPhamTrongDonHang.Name = "lstv_ThongTinSanPhamTrongDonHang";
-            this.lstv_ThongTinSanPhamTrongDonHang.Size = new System.Drawing.Size(1275, 171);
-            this.lstv_ThongTinSanPhamTrongDonHang.TabIndex = 0;
-            this.lstv_ThongTinSanPhamTrongDonHang.UseCompatibleStateImageBehavior = false;
+            this.lstv_ThongTinGiaoDich.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstv_ThongTinGiaoDich.HideSelection = false;
+            this.lstv_ThongTinGiaoDich.Location = new System.Drawing.Point(3, 32);
+            this.lstv_ThongTinGiaoDich.Name = "lstv_ThongTinGiaoDich";
+            this.lstv_ThongTinGiaoDich.Size = new System.Drawing.Size(1275, 219);
+            this.lstv_ThongTinGiaoDich.TabIndex = 0;
+            this.lstv_ThongTinGiaoDich.UseCompatibleStateImageBehavior = false;
             // 
             // frm_DonHang
             // 
@@ -778,13 +767,13 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -794,7 +783,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button btn_TaoHoaDon;
         private System.Windows.Forms.GroupBox groupBox3;

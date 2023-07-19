@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.SqlClient; 
 namespace asm_DangKi
 {
     public partial class frm_DonHang : Form
