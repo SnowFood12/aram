@@ -165,6 +165,7 @@
             this.cbo_LuaChonSanPham.Name = "cbo_LuaChonSanPham";
             this.cbo_LuaChonSanPham.Size = new System.Drawing.Size(228, 34);
             this.cbo_LuaChonSanPham.TabIndex = 3;
+            this.cbo_LuaChonSanPham.SelectedIndexChanged += new System.EventHandler(this.cbo_LuaChonSanPham_SelectedIndexChanged);
             // 
             // txt_DonGia
             // 
