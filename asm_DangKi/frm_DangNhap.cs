@@ -17,7 +17,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
         private void frm_DangNhap_Load(object sender, EventArgs e)
         {
@@ -102,7 +102,6 @@ namespace asm_DangKi
         private void lab_Thoat_Click(object sender, EventArgs e)
         {
             Application.Exit(); // đóng form đăng nhập 
-            // jashalahfalsahdlashd
         }
     }
 }

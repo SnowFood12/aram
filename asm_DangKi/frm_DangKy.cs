@@ -18,7 +18,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // chuỗi kết nói SQL 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // chuỗi kết nói SQL 
         SqlConnection conn = null;  // khai báo biến kết nói 
         private void label1_Click(object sender, EventArgs e)
         {
