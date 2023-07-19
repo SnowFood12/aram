@@ -313,6 +313,7 @@
             this.cbo_TenDoiTac.Name = "cbo_TenDoiTac";
             this.cbo_TenDoiTac.Size = new System.Drawing.Size(210, 34);
             this.cbo_TenDoiTac.TabIndex = 2;
+            this.cbo_TenDoiTac.SelectedIndexChanged += new System.EventHandler(this.cbo_TenDoiTac_SelectedIndexChanged);
             // 
             // label5
             // 
