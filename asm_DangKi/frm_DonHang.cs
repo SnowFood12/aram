@@ -23,7 +23,9 @@ namespace asm_DangKi
             // gọi hàm load cbo_DoiTac 
             LoadDuLieuVaocbo_DoiTac();
             // gọi hàm load txt_NhanVienTaoHoaDon
-            Loadtxt_TenNhanVien(); 
+            Loadtxt_TenNhanVien();
+
+            LoadDatagridview();
         }
         void LoadDuLieuVaocbo_SanPham()
         {
@@ -69,6 +71,20 @@ namespace asm_DangKi
                 }
             }
         } // load dữ liệu để thêm vào txt_NhanVienTaoHoaDon
+
+        void LoadDatagridview()
+        {
+            using ( conn = new SqlConnection(str))
+            {
+                dgv_DonHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                string query = "select * from HoaDon"; 
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                _adapter.Fill(dt); 
+                dgv_DonHang.DataSource = dt;
+            }
+        }
 
         private void groupBox4_Enter(object sender, EventArgs e)
         {

@@ -89,6 +89,7 @@
             this.lstv_ThongTinSanPhamDaGiaoDich = new System.Windows.Forms.ListView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lstv_ThongTinGiaoDich = new System.Windows.Forms.ListView();
+            this.btn_ThemVaoDonHang = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -139,6 +140,7 @@
             this.groupBox4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox4.Controls.Add(this.cbo_LuaChonSanPham);
             this.groupBox4.Controls.Add(this.txt_DonGia);
+            this.groupBox4.Controls.Add(this.btn_ThemVaoDonHang);
             this.groupBox4.Controls.Add(this.btn_SuaDonHang);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.btn_TaoHoaDon);
@@ -178,9 +180,9 @@
             // 
             // btn_SuaDonHang
             // 
-            this.btn_SuaDonHang.Location = new System.Drawing.Point(873, 142);
+            this.btn_SuaDonHang.Location = new System.Drawing.Point(792, 142);
             this.btn_SuaDonHang.Name = "btn_SuaDonHang";
-            this.btn_SuaDonHang.Size = new System.Drawing.Size(184, 42);
+            this.btn_SuaDonHang.Size = new System.Drawing.Size(155, 42);
             this.btn_SuaDonHang.TabIndex = 2;
             this.btn_SuaDonHang.Text = "Sữa đơn hàng";
             this.btn_SuaDonHang.UseVisualStyleBackColor = true;
@@ -196,9 +198,9 @@
             // 
             // btn_TaoHoaDon
             // 
-            this.btn_TaoHoaDon.Location = new System.Drawing.Point(652, 142);
+            this.btn_TaoHoaDon.Location = new System.Drawing.Point(631, 142);
             this.btn_TaoHoaDon.Name = "btn_TaoHoaDon";
-            this.btn_TaoHoaDon.Size = new System.Drawing.Size(184, 42);
+            this.btn_TaoHoaDon.Size = new System.Drawing.Size(155, 42);
             this.btn_TaoHoaDon.TabIndex = 2;
             this.btn_TaoHoaDon.Text = "Tạo hoá đơn";
             this.btn_TaoHoaDon.UseVisualStyleBackColor = true;
@@ -269,7 +271,7 @@
             // 
             this.groupBox3.BackColor = System.Drawing.Color.LightSeaGreen;
             this.groupBox3.Controls.Add(this.dgv_DonHang);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(73, 503);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1225, 271);
@@ -282,11 +284,11 @@
             this.dgv_DonHang.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgv_DonHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DonHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_DonHang.Location = new System.Drawing.Point(3, 32);
+            this.dgv_DonHang.Location = new System.Drawing.Point(3, 28);
             this.dgv_DonHang.Name = "dgv_DonHang";
             this.dgv_DonHang.RowHeadersWidth = 51;
             this.dgv_DonHang.RowTemplate.Height = 24;
-            this.dgv_DonHang.Size = new System.Drawing.Size(1219, 236);
+            this.dgv_DonHang.Size = new System.Drawing.Size(1219, 240);
             this.dgv_DonHang.TabIndex = 0;
             // 
             // groupBox2
@@ -612,7 +614,7 @@
             this.groupBox5.Size = new System.Drawing.Size(1281, 175);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Thông tin đơn hàng";
+            this.groupBox5.Text = "Thông tin hoá đơn";
             // 
             // lstv_DonHangThanhToan
             // 
@@ -745,6 +747,15 @@
             this.lstv_ThongTinGiaoDich.TabIndex = 0;
             this.lstv_ThongTinGiaoDich.UseCompatibleStateImageBehavior = false;
             // 
+            // btn_ThemVaoDonHang
+            // 
+            this.btn_ThemVaoDonHang.Location = new System.Drawing.Point(953, 142);
+            this.btn_ThemVaoDonHang.Name = "btn_ThemVaoDonHang";
+            this.btn_ThemVaoDonHang.Size = new System.Drawing.Size(215, 42);
+            this.btn_ThemVaoDonHang.TabIndex = 2;
+            this.btn_ThemVaoDonHang.Text = "Thêm vào đơn hàng";
+            this.btn_ThemVaoDonHang.UseVisualStyleBackColor = true;
+            // 
             // frm_DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -843,5 +854,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.ListView lstv_ThongTinSanPhamTrongDonHang;
+        private System.Windows.Forms.Button btn_ThemVaoDonHang;
     }
 }
