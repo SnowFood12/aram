@@ -21,7 +21,7 @@ namespace asm_DangKi
         SqlConnection conn = null; // khai báo biến liên kết 
         private void frm_DangNhap_Load(object sender, EventArgs e)
         {
-
+          
         }
 
         private void btn_DangKi_Click(object sender, EventArgs e)
@@ -61,13 +61,18 @@ namespace asm_DangKi
                 SqlCommand cmd = new SqlCommand(commet, conn); // khởi tại biến với chuỗi câu lệnh
 
                 SqlDataReader reader = cmd.ExecuteReader(); // khởi tạo biến đọc SQL
-
+               
                 if (reader.Read()) // khi biến đang được đọc
                 {
                     if ( txt_TenDangNhap.Text == reader["TenDangNhap"].ToString() && txt_MatKhau.Text == reader["MatKhau"].ToString()) // nếu trùng nhau 
                     {
                         // chuyển qua form trang chủ khi đăng nhập thành công
                         frm_TrangChu formTrangChu = new frm_TrangChu();
+                        // Lấy tên người dùng từ cột "HoVaTen" trong bảng TAIKHOAN
+                        string hoVaTen = reader["HoVaTen"].ToString();
+                        // Chuyển qua form kiểm kho và truyền tên người dùng
+                        frm_KiemKho frmKiemKho = new frm_KiemKho();
+                        frmKiemKho.HoVaTen = hoVaTen;
                         formTrangChu.Show();
                         this.Hide();
                     }
