@@ -17,7 +17,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=.;Initial Catalog=WINFORM;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=DESKTOP-442ME40\\YCHINHMLO;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
         private void frm_DangNhap_Load(object sender, EventArgs e)
         {
@@ -56,7 +56,7 @@ namespace asm_DangKi
             else
             {
                 // khai báo chuỗi câu lệnh SQL 
-                string commet = $"select * from TAIKHOAN where TenDangNhap = '{txt_TenDangNhap.Text}'"; 
+                string commet = $"select * from TaiKhoan where TenDangNhap = '{txt_TenDangNhap.Text}'"; 
 
                 SqlCommand cmd = new SqlCommand(commet, conn); // khởi tại biến với chuỗi câu lệnh
 

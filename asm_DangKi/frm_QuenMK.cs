@@ -16,7 +16,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=WINFORM;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=DESKTOP-442ME40\\YCHINHMLO;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
@@ -67,7 +67,7 @@ namespace asm_DangKi
                          }
                      }*/
 
-                    string query = $"update TAIKHOAN set MatKhau = '{txt_MatKhauMoi.Text}' where TenDangNhap = '{txt_TenDangNhap.Text}'"; // khai báo chuỗi câu lệnh SQL
+                    string query = $"update TaiKhoan set MatKhau = '{txt_MatKhauMoi.Text}' where TenDangNhap = '{txt_TenDangNhap.Text}'"; // khai báo chuỗi câu lệnh SQL
 
                     SqlCommand command = new SqlCommand(query, conn); // khởi tạo biến với chuỗi câu lệnh và biến liên kết 
                     

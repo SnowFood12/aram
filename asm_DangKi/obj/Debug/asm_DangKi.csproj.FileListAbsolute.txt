@@ -20,3 +20,25 @@ C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_DoiTac.resources
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_NhanVien.resources
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_KiemKho.resources
+D:\chinh\asm_DangKi\bin\Debug\asm_DangKi.exe.config
+D:\chinh\asm_DangKi\bin\Debug\asm_DangKi.exe
+D:\chinh\asm_DangKi\bin\Debug\asm_DangKi.pdb
+D:\chinh\asm_DangKi\bin\Debug\FontAwesome.Sharp.dll
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.csproj.AssemblyReference.cache
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.csproj.SuggestedBindingRedirects.cache
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_DoiTac.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_DonHang.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_KiemKho.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_NhanVien.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_TrangChuCon.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_SanPham.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_DangKi.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_DangNhap.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_QuenMK.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.frm_TrangChu.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.Properties.Resources.resources
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.csproj.GenerateResource.cache
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.csproj.CoreCompileInputs.cache
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.csproj.CopyComplete
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.exe
+D:\chinh\asm_DangKi\obj\Debug\asm_DangKi.pdb
