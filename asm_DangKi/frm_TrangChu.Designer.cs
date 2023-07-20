@@ -283,7 +283,7 @@ namespace asm_DangKi
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1672, 847);
             this.Controls.Add(this.pal_Menu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "frm_TrangChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
