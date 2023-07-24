@@ -17,11 +17,8 @@ namespace asm_DangKi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new frm_TrangChu());
-=======
-            Application.Run(new frm_DangNhap());
->>>>>>> origin/kiemKho_LEPHILONG
+            Application.Run(new frm_DangKi());
+
         }
     }
 }

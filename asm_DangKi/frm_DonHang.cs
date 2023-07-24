@@ -24,65 +24,91 @@ namespace asm_DangKi
             LoadDuLieuVaocbo_DoiTac();
             // gọi hàm load txt_NhanVienTaoHoaDon
             Loadtxt_TenNhanVien();
-
-            LoadDatagridview();
         }
         void LoadDuLieuVaocbo_SanPham()
         {
-            using ( conn = new SqlConnection(str))
+            try
             {
-                string query = "select * from SanPham";
-                SqlDataAdapter _adapter = new SqlDataAdapter ( query, conn );
-                DataSet _dataset = new DataSet();
-                _adapter.Fill(_dataset , "SanPham");
+                using (conn = new SqlConnection(str))
+                {
+                    string query = "select * from SanPham";
+                    SqlDataAdapter _adapter = new SqlDataAdapter(query, conn);
+                    DataSet _dataset = new DataSet();
+                    _adapter.Fill(_dataset, "SanPham");
 
-                cbo_LuaChonSanPham.DataSource = _dataset.Tables["SanPham"];
-                cbo_LuaChonSanPham.DisplayMember = "TenSanPham";
-                cbo_LuaChonSanPham.ValueMember = "MaSanPham"; 
+                    cbo_LuaChonSanPham.DataSource = _dataset.Tables["SanPham"];
+                    cbo_LuaChonSanPham.DisplayMember = "TenSanPham";
+                    cbo_LuaChonSanPham.ValueMember = "MaSanPham";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         } // load dữ liệu vào cbo_LuaChonSanPham
 
         void LoadDuLieuVaocbo_DoiTac()
         {
-            using ( conn = new SqlConnection(str ))
+            try
             {
-                string query = "select * from DoiTac";
-                SqlDataAdapter _adapter = new SqlDataAdapter(query, conn);
-                DataSet _dataset = new DataSet();
-                _adapter.Fill(_dataset, "DoiTac");
+                using (conn = new SqlConnection(str))
+                {
+                    string query = "select * from DoiTac";
+                    SqlDataAdapter _adapter = new SqlDataAdapter(query, conn);
+                    DataSet _dataset = new DataSet();
+                    _adapter.Fill(_dataset, "DoiTac");
 
-                cbo_TenDoiTac.DataSource = _dataset.Tables["DoiTac"];
-                cbo_TenDoiTac.DisplayMember = "TenDoiTac";
-                cbo_TenDoiTac.ValueMember = "MaDoiTac";
+                    cbo_TenDoiTac.DataSource = _dataset.Tables["DoiTac"];
+                    cbo_TenDoiTac.DisplayMember = "TenDoiTac";
+                    cbo_TenDoiTac.ValueMember = "MaDoiTac";
+                }
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         } // load dữ liệu vào cbo_DoiTac
 
         void Loadtxt_TenNhanVien()
         {
-            using ( conn = new SqlConnection(str))
+            try
             {
-                conn.Open();
-                string query = "select * from TaiKhoan";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (conn = new SqlConnection(str))
                 {
-                    txt_NhanVienTaoHoaDon.Text = reader["HoVaTen"].ToString();
+                    conn.Open();
+                    string query = "select * from TaiKhoan";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        txt_NhanVienTaoHoaDon.Text = reader["HoVaTen"].ToString();
+                    }
                 }
             }
+            catch ( Exception ex )
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }  
         } // load dữ liệu để thêm vào txt_NhanVienTaoHoaDon
 
-        void LoadDatagridview()
+        void LoadDatagridviewHoaDon()
         {
-            using ( conn = new SqlConnection(str))
+            try
             {
-                dgv_DonHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                string query = "select * from HoaDon"; 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                _adapter.Fill(dt); 
-                dgv_DonHang.DataSource = dt;
+                using (conn = new SqlConnection(str))
+                {
+                    dgv_DonHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    string query = "select * from HoaDon";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    _adapter.Fill(dt);
+                    dgv_DonHang.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " +  ex.Message , "Thông báo", MessageBoxButtons.OK , MessageBoxIcon.Warning);
             }
         }
 
@@ -93,36 +119,76 @@ namespace asm_DangKi
 
         private void cbo_LuaChonSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using ( conn = new SqlConnection (str))
+            try
             {
-                conn.Open();
-                string query = "select * from SanPham where MaSanPham = @ma"; 
-                SqlCommand cmd = new SqlCommand(query, conn);   
-                cmd.Parameters.AddWithValue("@ma" , cbo_LuaChonSanPham.SelectedValue.ToString());
-                SqlDataReader reader = cmd.ExecuteReader();
-                if ( reader.Read())
+                using (conn = new SqlConnection(str))
                 {
-                    txt_DonGia.Text = reader["GiaBan"].ToString();
-                    txt_HangTonKho.Text = reader["SoLuong"].ToString(); 
+                    conn.Open();
+                    string query = "select * from SanPham where MaSanPham = @ma";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ma", cbo_LuaChonSanPham.SelectedValue.ToString());
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        txt_DonGia.Text = reader["GiaBan"].ToString();
+                        txt_HangTonKho.Text = reader["SoLuong"].ToString();
+                    }
                 }
-            } // thay đổi các textbox khi đổi dữ liệu trong combobox
-        }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+           
+        } // thay đổi các textbox khi đổi dữ liệu trong combobox
+        
+   
 
         private void cbo_TenDoiTac_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (conn = new SqlConnection(str))
+            try
             {
-                conn.Open();
-                string query = "select * from DoiTac where MaDoiTac = @ma";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ma", cbo_TenDoiTac.SelectedValue.ToString());
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (conn = new SqlConnection(str))
                 {
-                    txt_SoDienThoaiDoiTac.Text = reader["SoDT"].ToString();
-                    txt_DiaChiDoiTac.Text = reader["DiaChi"].ToString();
+                    conn.Open();
+                    string query = "select * from DoiTac where MaDoiTac = @ma";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ma", cbo_TenDoiTac.SelectedValue.ToString());
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        txt_SoDienThoaiDoiTac.Text = reader["SoDT"].ToString();
+                        txt_DiaChiDoiTac.Text = reader["DiaChi"].ToString();
+                    }
+                } // thay đổi các textbox khi đổi dữ liệu trong combobox
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }  
+        }
+
+        private void btn_TaoHoaDon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using ( conn = new SqlConnection(str))
+                {
+                    string query = "select * from HoaDon";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    SqlCommandBuilder sqlCommand = new SqlCommandBuilder(_adapter);
+                    _adapter.Fill(dataSet, "HoaDon");
+                    DataRow dataRow = dataSet.Tables["HoaDon"].NewRow();
+                    dataRow["MaHoaDon"] = txt_MaHoaDon.Text;
+
                 }
-            } // thay đổi các textbox khi đổi dữ liệu trong combobox
+            }
+            catch ( Exception ex )
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
