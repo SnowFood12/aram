@@ -48,19 +48,22 @@
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdo_sdt = new System.Windows.Forms.RadioButton();
+            this.rdo_ten = new System.Windows.Forms.RadioButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.rdo_ma = new System.Windows.Forms.RadioButton();
+            this.dgv_DSDTAC = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_timDT = new System.Windows.Forms.TextBox();
-            this.dgv_DSDTAC = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSDTAC)).BeginInit();
             this.SuspendLayout();
@@ -80,13 +83,14 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.btn_xoa);
             this.tabPage1.Controls.Add(this.btn_sua);
             this.tabPage1.Controls.Add(this.btn_them);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.dgv_DanhSach);
             this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 45);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
@@ -216,35 +220,35 @@
             // 
             this.txt_Email.Location = new System.Drawing.Point(1125, 120);
             this.txt_Email.Name = "txt_Email";
-            this.txt_Email.Size = new System.Drawing.Size(274, 41);
+            this.txt_Email.Size = new System.Drawing.Size(274, 35);
             this.txt_Email.TabIndex = 29;
             // 
             // txt_SoDienThoai
             // 
             this.txt_SoDienThoai.Location = new System.Drawing.Point(1125, 44);
             this.txt_SoDienThoai.Name = "txt_SoDienThoai";
-            this.txt_SoDienThoai.Size = new System.Drawing.Size(274, 41);
+            this.txt_SoDienThoai.Size = new System.Drawing.Size(274, 35);
             this.txt_SoDienThoai.TabIndex = 28;
             // 
             // txt_DiaChi
             // 
             this.txt_DiaChi.Location = new System.Drawing.Point(461, 191);
             this.txt_DiaChi.Name = "txt_DiaChi";
-            this.txt_DiaChi.Size = new System.Drawing.Size(339, 41);
+            this.txt_DiaChi.Size = new System.Drawing.Size(339, 35);
             this.txt_DiaChi.TabIndex = 27;
             // 
             // txt_TenDoiTac
             // 
             this.txt_TenDoiTac.Location = new System.Drawing.Point(461, 117);
             this.txt_TenDoiTac.Name = "txt_TenDoiTac";
-            this.txt_TenDoiTac.Size = new System.Drawing.Size(339, 41);
+            this.txt_TenDoiTac.Size = new System.Drawing.Size(339, 35);
             this.txt_TenDoiTac.TabIndex = 26;
             // 
             // txt_MaDoiTac
             // 
             this.txt_MaDoiTac.Location = new System.Drawing.Point(461, 41);
             this.txt_MaDoiTac.Name = "txt_MaDoiTac";
-            this.txt_MaDoiTac.Size = new System.Drawing.Size(339, 41);
+            this.txt_MaDoiTac.Size = new System.Drawing.Size(339, 35);
             this.txt_MaDoiTac.TabIndex = 25;
             // 
             // dgv_DanhSach
@@ -272,14 +276,14 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.dgv_DSDTAC);
-            this.tabPage2.Controls.Add(this.pictureBox3);
-            this.tabPage2.Controls.Add(this.pictureBox2);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.txt_timDT);
             this.tabPage2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.tabPage2.Location = new System.Drawing.Point(4, 45);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -288,35 +292,89 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tìm kiếm thông tin đối tác";
             // 
-            // pictureBox3
+            // groupBox2
             // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.Image = global::asm_DangKi.Properties.Resources.refresh;
-            this.pictureBox3.Location = new System.Drawing.Point(1040, 156);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(60, 37);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 9;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.groupBox2.Controls.Add(this.rdo_sdt);
+            this.groupBox2.Controls.Add(this.rdo_ten);
+            this.groupBox2.Controls.Add(this.pictureBox2);
+            this.groupBox2.Controls.Add(this.rdo_ma);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(366, 200);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(719, 134);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Bạn muốn tìm theo?";
+            // 
+            // rdo_sdt
+            // 
+            this.rdo_sdt.AutoSize = true;
+            this.rdo_sdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_sdt.Location = new System.Drawing.Point(469, 29);
+            this.rdo_sdt.Name = "rdo_sdt";
+            this.rdo_sdt.Size = new System.Drawing.Size(164, 29);
+            this.rdo_sdt.TabIndex = 3;
+            this.rdo_sdt.TabStop = true;
+            this.rdo_sdt.Text = "Số điện thoại";
+            this.rdo_sdt.UseVisualStyleBackColor = true;
+            this.rdo_sdt.CheckedChanged += new System.EventHandler(this.rdo_sdt_CheckedChanged);
+            // 
+            // rdo_ten
+            // 
+            this.rdo_ten.AutoSize = true;
+            this.rdo_ten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_ten.Location = new System.Drawing.Point(219, 79);
+            this.rdo_ten.Name = "rdo_ten";
+            this.rdo_ten.Size = new System.Drawing.Size(137, 29);
+            this.rdo_ten.TabIndex = 2;
+            this.rdo_ten.TabStop = true;
+            this.rdo_ten.Text = "Họ và Tên";
+            this.rdo_ten.UseVisualStyleBackColor = true;
+            this.rdo_ten.CheckedChanged += new System.EventHandler(this.rdo_ten_CheckedChanged);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::asm_DangKi.Properties.Resources.handshake;
-            this.pictureBox2.Location = new System.Drawing.Point(211, 124);
+            this.pictureBox2.Location = new System.Drawing.Point(53, 44);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(115, 84);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             // 
+            // rdo_ma
+            // 
+            this.rdo_ma.AutoSize = true;
+            this.rdo_ma.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_ma.Location = new System.Drawing.Point(219, 29);
+            this.rdo_ma.Name = "rdo_ma";
+            this.rdo_ma.Size = new System.Drawing.Size(73, 29);
+            this.rdo_ma.TabIndex = 0;
+            this.rdo_ma.TabStop = true;
+            this.rdo_ma.Text = "Mã ";
+            this.rdo_ma.UseVisualStyleBackColor = true;
+            this.rdo_ma.CheckedChanged += new System.EventHandler(this.rdo_ma_CheckedChanged);
+            // 
+            // dgv_DSDTAC
+            // 
+            this.dgv_DSDTAC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgv_DSDTAC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DSDTAC.Location = new System.Drawing.Point(240, 340);
+            this.dgv_DSDTAC.Name = "dgv_DSDTAC";
+            this.dgv_DSDTAC.RowHeadersWidth = 62;
+            this.dgv_DSDTAC.RowTemplate.Height = 28;
+            this.dgv_DSDTAC.Size = new System.Drawing.Size(968, 362);
+            this.dgv_DSDTAC.TabIndex = 10;
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(470, 26);
+            this.label3.Location = new System.Drawing.Point(501, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(290, 36);
             this.label3.TabIndex = 5;
@@ -327,7 +385,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(369, 156);
+            this.label2.Location = new System.Drawing.Point(360, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 32);
             this.label2.TabIndex = 1;
@@ -336,23 +394,12 @@
             // txt_timDT
             // 
             this.txt_timDT.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_timDT.Location = new System.Drawing.Point(582, 150);
+            this.txt_timDT.Location = new System.Drawing.Point(585, 133);
             this.txt_timDT.Multiline = true;
             this.txt_timDT.Name = "txt_timDT";
             this.txt_timDT.Size = new System.Drawing.Size(384, 50);
             this.txt_timDT.TabIndex = 0;
             this.txt_timDT.TextChanged += new System.EventHandler(this.txt_timDT_TextChanged);
-            // 
-            // dgv_DSDTAC
-            // 
-            this.dgv_DSDTAC.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgv_DSDTAC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DSDTAC.Location = new System.Drawing.Point(199, 234);
-            this.dgv_DSDTAC.Name = "dgv_DSDTAC";
-            this.dgv_DSDTAC.RowHeadersWidth = 62;
-            this.dgv_DSDTAC.RowTemplate.Height = 28;
-            this.dgv_DSDTAC.Size = new System.Drawing.Size(968, 362);
-            this.dgv_DSDTAC.TabIndex = 10;
             // 
             // frm_DoiTac
             // 
@@ -374,7 +421,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSDTAC)).EndInit();
             this.ResumeLayout(false);
@@ -407,7 +455,10 @@
         private System.Windows.Forms.TextBox txt_timDT;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DataGridView dgv_DSDTAC;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdo_sdt;
+        private System.Windows.Forms.RadioButton rdo_ten;
+        private System.Windows.Forms.RadioButton rdo_ma;
     }
 }

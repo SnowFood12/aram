@@ -6,10 +6,12 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace asm_DangKi
 {
@@ -24,6 +26,18 @@ namespace asm_DangKi
         string str = "Data Source=DESKTOP-442ME40\\YCHINHMLO;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết  
         SqlDataAdapter std = null;
         int ViTri = -1;
+        public void ketnoi()
+        {
+            try
+            {
+                conn = new SqlConnection(str); // khởi tạo biến liên kết 
+                conn.Open(); // mở liên kết 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex); // bẫy lỗi khi không liên kết được 
+            }
+        }
         private bool kiemtrasodienthoai(string sodienthoai)
         {
             if (string.IsNullOrEmpty(sodienthoai))
@@ -43,26 +57,6 @@ namespace asm_DangKi
             }
             return true;
         }
-        public void ketnoi()
-        {
-            try
-            {
-                conn = new SqlConnection(str); // khởi tạo biến liên kết 
-                conn.Open(); // mở liên kết 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex); // bẫy lỗi khi không liên kết được 
-            }
-        }
-        public void trong()
-        {
-            txt_MaDoiTac.Text = "";
-            txt_TenDoiTac.Text = "";
-            txt_DiaChi.Text = "";
-            txt_SoDienThoai.Text = "";
-            txt_Email.Text = "";
-        }
         public void load_dvg_DanhSach()
         {
             ketnoi();
@@ -74,7 +68,19 @@ namespace asm_DangKi
             std.Fill(DS, "DoiTac");
             dgv_DanhSach.DataSource = DS.Tables["DoiTac"];
             dgv_DSDTAC.DataSource = DS.Tables["DoiTac"];
-        }     
+            if (!rdo_ma.Checked || !rdo_ten.Checked || !rdo_sdt.Checked)
+            {
+                dgv_DSDTAC.DataSource = null;
+            }         
+        }
+        public void trong()
+        {
+            txt_MaDoiTac.Text = "";
+            txt_TenDoiTac.Text = "";
+            txt_DiaChi.Text = "";
+            txt_SoDienThoai.Text = "";
+            txt_Email.Text = "";
+        }
         private void btn_them_Click(object sender, EventArgs e)
         {
             txt_MaDoiTac.Enabled = true;
@@ -124,6 +130,7 @@ namespace asm_DangKi
             }
             catch (Exception)
             {
+                //trong();
                 MessageBox.Show("Không có dữ liệu được thêm vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -144,9 +151,8 @@ namespace asm_DangKi
             }
             catch (Exception)
             {
-                MessageBox.Show("hãy chọn vào dữ liệu cần thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("hãy chọn vào dữ liệu cần thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void btn_sua_Click(object sender, EventArgs e)
         {
@@ -168,13 +174,12 @@ namespace asm_DangKi
                     _row["SoDT"] = txt_SoDienThoai.Text;
                     _row["Email"] = txt_Email.Text;
                     _row.EndEdit();
-                    std.Update(ds.Tables["DoiTac"]);
                     DialogResult result = MessageBox.Show("bạn chắc chắn muốn cập nhật", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         //thực thi câu truy vấn xóa dữ liệu
-                        int RowsAffected = std.Fill(ds, "DoiTac"); ;
-                        if (RowsAffected >= 0)
+                        int RowsAffected = std.Update(ds.Tables["DoiTac"]);
+                        if (RowsAffected > 0)
                         {
                             load_dvg_DanhSach();
                             trong();
@@ -189,9 +194,8 @@ namespace asm_DangKi
             }
             catch (Exception)
             {
-                MessageBox.Show("hãy chọn đối tác muốn cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            
+                MessageBox.Show("hãy chọn đối tác muốn cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }         
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
@@ -201,16 +205,14 @@ namespace asm_DangKi
                 std.Fill(ds, "DoiTac");
                 DataRow _row = ds.Tables["DoiTac"].Rows[ViTri];
                 _row.Delete();
-                std.Update(ds.Tables["DoiTac"]);
                 DialogResult result = MessageBox.Show("bạn chắc chắn muốn xóa", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     //thực thi câu truy vấn xóa dữ liệu
-                    int RowsAffected = std.Fill(ds, "DoiTac"); ;
-                    if (RowsAffected >= 0)
+                    int RowsAffected = std.Update(ds.Tables["DoiTac"]); 
+                    if (RowsAffected > 0) 
                     {
-                        load_dvg_DanhSach();
-                        
+                        load_dvg_DanhSach();                       
                         MessageBox.Show("xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -221,27 +223,22 @@ namespace asm_DangKi
             }
             catch (Exception)
             {
-                MessageBox.Show("hãy chọn đối tác muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("hãy chọn đối tác muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void frm_DoiTac_Load(object sender, EventArgs e)
         {
             load_dvg_DanhSach();
         }   
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            load_dvg_DanhSach();
-        }
         private void txt_timDT_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                string tim = txt_timDT.Text.Trim();
-                string query = "SELECT * FROM DoiTac WHERE TenDoiTac LIKE @tim or MaDoiTac LIKE @tim or DiaChi LIKE @tim or SoDT LIKE @tim or Email LIKE @tim";
-                using (conn = new SqlConnection(str))
+                ketnoi();
+                string tim = txt_timDT.Text.Trim();             
+                if (rdo_ma.Checked)
                 {
-                    conn.Open();
+                    string query = "SELECT * FROM DoiTac WHERE MaDoiTac LIKE @tim ";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@tim", tim + "%");
@@ -250,12 +247,50 @@ namespace asm_DangKi
                         adapter.Fill(dt);
                         dgv_DSDTAC.DataSource = dt;
                     }
+                    return;
+                }
+                if (rdo_ten.Checked)
+                {
+                    string query = "SELECT * FROM DoiTac WHERE TenDoiTac LIKE @tim";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@tim", tim + "%");
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dgv_DSDTAC.DataSource = dt;
+                    }
+                    return;
+                } 
+                if (rdo_sdt.Checked)
+                {
+                    string query = "SELECT * FROM DoiTac WHERE SoDT LIKE @tim";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@tim", tim + "%");
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dgv_DSDTAC.DataSource = dt;
+                    }
+                    return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("lỗi"+ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("lỗi"+ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void rdo_ma_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
+        private void rdo_ten_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
+        private void rdo_sdt_CheckedChanged(object sender, EventArgs e)
+        { 
         }
     }
     
