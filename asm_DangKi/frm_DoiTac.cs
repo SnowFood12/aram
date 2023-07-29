@@ -61,7 +61,6 @@ namespace asm_DangKi
         {
             ketnoi();
             string strcmd = @"select*from DoiTac";
-            //xuat nhieu bang
             std = new SqlDataAdapter(strcmd, conn);
             SqlCommandBuilder cmd = new SqlCommandBuilder(std);
             DataSet DS = new DataSet();
@@ -71,7 +70,8 @@ namespace asm_DangKi
             if (!rdo_ma.Checked || !rdo_ten.Checked || !rdo_sdt.Checked)
             {
                 dgv_DSDTAC.DataSource = null;
-            }         
+            }
+            conn.Close();
         }
         public void trong()
         {
@@ -83,6 +83,7 @@ namespace asm_DangKi
         }
         private void btn_them_Click(object sender, EventArgs e)
         {
+            ketnoi();
             txt_MaDoiTac.Enabled = true;
             string regex = @"^[a-zA-Z0-9.]{3,30}@gmail.com(.vn|)$";
             bool test = Regex.IsMatch(txt_Email.Text, regex);
@@ -125,17 +126,18 @@ namespace asm_DangKi
                 std.Update(ds.Tables["DoiTac"]);
                 load_dvg_DanhSach();
                 MessageBox.Show("thêm mới thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                /*conn.Close();*/
                 trong();
             }
             catch (Exception)
             {
-                //trong();
+                trong();
                 MessageBox.Show("Không có dữ liệu được thêm vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            conn.Close();
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            ketnoi();
             try
             {
                 DataSet ds = new DataSet();
@@ -153,9 +155,12 @@ namespace asm_DangKi
             {
                 MessageBox.Show("hãy chọn vào dữ liệu cần thao tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conn.Close();
         }
         private void btn_sua_Click(object sender, EventArgs e)
         {
+
+            ketnoi();
             try
             {
                 if (txt_MaDoiTac.Text.Trim() == "" || txt_TenDoiTac.Text.Trim() == ""|| txt_DiaChi.Text.Trim() == "" ||txt_SoDienThoai.Text.Trim() == "" ||txt_Email.Text.Trim() == "")
@@ -195,12 +200,14 @@ namespace asm_DangKi
             catch (Exception)
             {
                 MessageBox.Show("hãy chọn đối tác muốn cập nhật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }         
+            }
+            conn.Close();
         }
         private void btn_xoa_Click(object sender, EventArgs e)
         {
+            ketnoi();
             try
-            {
+            {             
                 DataSet ds = new DataSet();
                 std.Fill(ds, "DoiTac");
                 DataRow _row = ds.Tables["DoiTac"].Rows[ViTri];
@@ -225,6 +232,7 @@ namespace asm_DangKi
             {
                 MessageBox.Show("hãy chọn đối tác muốn xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conn.Close();
         }
         private void frm_DoiTac_Load(object sender, EventArgs e)
         {
@@ -232,9 +240,9 @@ namespace asm_DangKi
         }   
         private void txt_timDT_TextChanged(object sender, EventArgs e)
         {
+            ketnoi();
             try
-            {
-                ketnoi();
+            {              
                 string tim = txt_timDT.Text.Trim();             
                 if (rdo_ma.Checked)
                 {
@@ -280,6 +288,7 @@ namespace asm_DangKi
             {
                 MessageBox.Show("lỗi"+ex, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            conn.Close();
         }
         private void rdo_ma_CheckedChanged(object sender, EventArgs e)
         {
