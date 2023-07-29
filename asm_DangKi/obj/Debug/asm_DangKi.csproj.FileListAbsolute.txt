@@ -66,3 +66,4 @@ C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.exe
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.pdb
 >>>>>>> origin/kiemKho_LEPHILONG
+C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\frm_ASM\asm_DangKi\obj\Debug\asm_DangKi.csproj.ResolveComReference.cache

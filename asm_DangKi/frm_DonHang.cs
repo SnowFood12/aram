@@ -8,8 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
+using System.Windows.Media.Media3D;
+/*using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;*/
 
 namespace asm_DangKi
+
 {
     public partial class frm_DonHang : Form
     {   
@@ -26,7 +31,11 @@ namespace asm_DangKi
             // gọi hàm load txt_NhanVienTaoHoaDon
             Loadtxt_TenNhanVien();
 
+            LoadBangGiaoDich();
+
+            TongDoanhThu(); 
             txt_SoLuong.ReadOnly = true;
+
         }
         public void LoadDuLieuVaocbo_SanPham()
         {
@@ -200,6 +209,10 @@ namespace asm_DangKi
                     ThemHoaDon();
                     txt_MaHoaDon.ReadOnly = true;
                     btn_TaoHoaDon.Hide();
+/*                    btn_SuaDonHang.Show();
+                    btn_ThanhToan.Show();
+                    btn_XoaDonHang.Show();
+                    btn_ThemVaoDonHang.Show();*/
                 }
             }
             catch ( Exception ex )
@@ -328,6 +341,7 @@ namespace asm_DangKi
                     TongTienDonHang();
                     SoLuongSauKhiThemDonHang();
                 }
+                
             }
             catch (Exception ex)
             {
@@ -453,7 +467,8 @@ namespace asm_DangKi
             try
             {
                 SuaSanPhamTrongDonHang();
-                SoLuongSauKhiSuaSanPhamTrongDonHang(); 
+                SoLuongSauKhiSuaSanPhamTrongDonHang();
+                TongGiaSauKhiSuaSanPhamTrongDonHang(); 
             }
             catch (Exception ex)
             {
@@ -488,7 +503,6 @@ namespace asm_DangKi
         {
             int soLuong = 0; 
             int soLuongTonKho = int.Parse(txt_HangTonKho.Text);
-            int soLuongConLai;
             int soLuongMoi = int.Parse(txt_SoLuong.Text); 
 
             using (conn = new SqlConnection(str))
@@ -504,16 +518,8 @@ namespace asm_DangKi
                 }
             } // lấy giá trị tổng tiền ban đầu của hoá đơn 
 
-            if ( soLuong > soLuongMoi)
-            {
-                int khoangChenhLech = soLuong - soLuongMoi;
-                soLuongConLai = soLuongTonKho + khoangChenhLech;
-            }
-            else
-            {
-                int khoangChenhLech = soLuongMoi - soLuong;
-                soLuongConLai = soLuongTonKho - khoangChenhLech;
-            }
+            int khoangChenhLech = soLuongMoi - soLuong;
+            int soLuongConLai = soLuongTonKho - khoangChenhLech; 
 
             using (conn = new SqlConnection(str))
             {
@@ -526,5 +532,181 @@ namespace asm_DangKi
                 txt_HangTonKho.Text = soLuongConLai.ToString();
             }
         }
+
+        public void TongGiaSauKhiSuaSanPhamTrongDonHang()
+        {
+            int tongGiaMoi = int.Parse(txt_TongTien.Text);
+            int tongGiaCu = 0;
+            int tongGiaHoaDon = 0;
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "select * from HoaDon_dsSanPham where MaSanPham = @Ma ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Ma", cbo_LuaChonSanPham.SelectedValue.ToString());
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    tongGiaCu = int.Parse(reader["TongTien"].ToString());
+                }
+            } // lấy giá trị tổng tiền ban đầu của sản phẩm
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "select * from HoaDon where MaHoaDon = @Ma ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Ma", txt_MaHoaDon.Text);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    tongGiaHoaDon = int.Parse(reader["TongTien"].ToString());
+                }
+            } // lấy giá trị tổng tiền ban đầu của hoá đơn 
+            int khoangChenhLech = tongGiaMoi - tongGiaCu;
+            int tongTienHoaDonMoi = tongGiaHoaDon + khoangChenhLech;
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = $"update HoaDon set TongTien = @SoLuong where MaHoaDon = @Ma ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@Ma", txt_MaHoaDon.Text);
+                cmd.Parameters.AddWithValue("@SoLuong", tongTienHoaDonMoi);
+                cmd.ExecuteNonQuery();
+                txt_TongTienHoaDon.Text = tongTienHoaDonMoi.ToString();
+            }
+
+        }
+
+        private void btn_HuyHoaDon_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btn_ThanhToan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ThemHoaDonVaoBangGiaoDich();
+                TongDoanhThu();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void ThemHoaDonVaoBangGiaoDich()
+        {
+            using (conn = new SqlConnection(str))
+            {
+
+                string query = $"select * from GiaoDich ";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                DataSet dataSet = new DataSet();
+                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                dataAdapter.Fill(dataSet, "GiaoDich");
+                DataRow dataRow = dataSet.Tables["GiaoDich"].NewRow();
+                dataRow["MaHoaDon"] = txt_MaHoaDon.Text;
+
+                dataSet.Tables["GiaoDich"].Rows.Add(dataRow);
+                dataAdapter.Update(dataSet.Tables["GiaoDich"]);
+                LoadBangGiaoDich();
+            }
+            dgv_DonHang.DataSource = null; 
+            dgv_ThonTinDonHangSanPham.DataSource = null;
+        } // thêm vào bảng giao dịch khi click vào button thanh toán
+
+        public void LoadBangGiaoDich()
+        {
+            try
+            {
+                using (conn = new SqlConnection(str))
+                {
+                    dgv_GiaoDich.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    string query = $"SELECT * FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon ";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    _adapter.Fill(dt);
+                    dgv_GiaoDich.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        } // load bảng giao dịch 
+
+        private void dgv_GiaoDich_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(e.RowIndex == -1)
+                {
+
+                }
+                else
+                {
+                    string sql;
+                    using (conn = new SqlConnection(str))
+                    {
+                        string query = $"select * from GiaoDich";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet dataSet = new DataSet();
+                        SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(adapter);
+
+                        adapter.Fill(dataSet, "HoaDon_dsSanPham");
+                        DataRow dataRow = dataSet.Tables["HoaDon_dsSanPham"].Rows[e.RowIndex];
+                        sql = dataRow["MaHoaDon"].ToString();
+                    }
+
+                    using (conn = new SqlConnection(str))
+                    {
+                        dgv_ThongTinSanPhamGiaoDich.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        string query = $"SELECT HoaDon_dsSanPham.MaHoaDonSanPham , HoaDon_dsSanPham.SoLuong , SanPham.TenSanPham , SanPham.GiaBan  ,HoaDon_dsSanPham.TongTien  , SanPham.TinhTrang FROM SanPham INNER JOIN HoaDon_dsSanPham ON SanPham.MaSanPham = HoaDon_dsSanPham.MaSanPham where MaHoaDon = '{sql}'";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dgv_ThongTinSanPhamGiaoDich.DataSource = dt;
+                    }
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void XuatFileExcel()
+        {
+
+        }
+
+        public void TongDoanhThu()
+        {
+            txt_TongDoanhThu.ReadOnly = true;
+            using ( conn = new SqlConnection(str))
+            {
+                int tong = 0;
+                using (conn = new SqlConnection(str))
+                {
+                    conn.Open(); 
+                    string query = $"select * from HoaDon";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader sqlDataReader = cmd.ExecuteReader();
+                    while (sqlDataReader.Read())
+                    {
+                        tong += int.Parse(sqlDataReader["TongTien"].ToString()); 
+                    }
+                    txt_TongDoanhThu.Text = tong.ToString();
+
+                }
+            }
+        }
+
     } 
 }
