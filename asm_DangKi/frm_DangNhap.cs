@@ -13,15 +13,18 @@ namespace asm_DangKi
 {
     public partial class frm_DangNhap : Form
     {
+        public static string HoVaTen; //Biến toàn cục lưu họ và tên người đăng nhập
         public frm_DangNhap()
         {
             InitializeComponent();
         }
+
         string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+
         SqlConnection conn = null; // khai báo biến liên kết 
         private void frm_DangNhap_Load(object sender, EventArgs e)
         {
-
+          
         }
 
         private void btn_DangKi_Click(object sender, EventArgs e)
@@ -61,13 +64,17 @@ namespace asm_DangKi
                 SqlCommand cmd = new SqlCommand(commet, conn); // khởi tại biến với chuỗi câu lệnh
 
                 SqlDataReader reader = cmd.ExecuteReader(); // khởi tạo biến đọc SQL
-
+               
                 if (reader.Read()) // khi biến đang được đọc
                 {
                     if ( txt_TenDangNhap.Text == reader["TenDangNhap"].ToString() && txt_MatKhau.Text == reader["MatKhau"].ToString()) // nếu trùng nhau 
                     {
                         // chuyển qua form trang chủ khi đăng nhập thành công
                         frm_TrangChu formTrangChu = new frm_TrangChu();
+                        // Lấy tên người dùng từ cột "HoVaTen" trong bảng TAIKHOAN
+                        string hoVaTen = reader["HoVaTen"].ToString();
+                        // gán giá trị cho biến toàn cục
+                        HoVaTen = hoVaTen;
                         formTrangChu.Show();
                         this.Hide();
                     }
@@ -102,7 +109,6 @@ namespace asm_DangKi
         private void lab_Thoat_Click(object sender, EventArgs e)
         {
             Application.Exit(); // đóng form đăng nhập 
-            // jashalahfalsahdlashd
         }
     }
 }

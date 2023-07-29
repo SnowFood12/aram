@@ -28,35 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TrangChuCon));
+            this.pic_Banner = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Banner)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // pic_Banner
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(56, 210);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(703, 58);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Chào mừng đến với snowFood";
+            this.pic_Banner.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pic_Banner.Image = ((System.Drawing.Image)(resources.GetObject("pic_Banner.Image")));
+            this.pic_Banner.Location = new System.Drawing.Point(0, 0);
+            this.pic_Banner.Name = "pic_Banner";
+            this.pic_Banner.Size = new System.Drawing.Size(1396, 760);
+            this.pic_Banner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic_Banner.TabIndex = 0;
+            this.pic_Banner.TabStop = false;
             // 
             // frm_TrangChuCon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(849, 484);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.ClientSize = new System.Drawing.Size(1396, 760);
+            this.Controls.Add(this.pic_Banner);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_TrangChuCon";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pic_Banner)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pic_Banner;
     }
 }

@@ -18,7 +18,9 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
+
         string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // chuỗi kết nói SQL 
+
         SqlConnection conn = null;  // khai báo biến kết nói 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -52,6 +54,10 @@ namespace asm_DangKi
                 {
                     MessageBox.Show("Xác nhận lại mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (txt_SDT.Text.Length < 10 || txt_SDT.Text.Length > 11 || !int.TryParse(txt_SDT.Text, out int sdt))
+                {
+                    MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else if (string.IsNullOrEmpty(txt_HoTen.Text))
                 {
                     MessageBox.Show("Vui lòng nhập họ tên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -60,10 +66,7 @@ namespace asm_DangKi
                 {
                     MessageBox.Show("Vui lòng nhập email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (txt_SDT.Text.Length < 10 || txt_SDT.Text.Length > 11 || !int.TryParse(txt_SDT.Text, out int sdt))
-                {
-                    MessageBox.Show("Số điện thoại không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
                 else
                 {
                     // khai báo chuỗi câu lệnh thêm giá trị vào SQL 

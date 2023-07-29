@@ -37,6 +37,7 @@ namespace asm_DangKi
             this.iBtn_DonHang = new FontAwesome.Sharp.IconButton();
             this.iBtn_Home = new FontAwesome.Sharp.IconButton();
             this.pal_Menu = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.iBtn_KiemKho = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.iBtn_Thoat = new FontAwesome.Sharp.IconButton();
@@ -50,11 +51,11 @@ namespace asm_DangKi
             // lbl_Logo
             // 
             this.lbl_Logo.AutoSize = true;
-            this.lbl_Logo.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Logo.Font = new System.Drawing.Font("UTM Alexander", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Logo.ForeColor = System.Drawing.Color.White;
-            this.lbl_Logo.Location = new System.Drawing.Point(48, 48);
+            this.lbl_Logo.Location = new System.Drawing.Point(12, 30);
             this.lbl_Logo.Name = "lbl_Logo";
-            this.lbl_Logo.Size = new System.Drawing.Size(173, 38);
+            this.lbl_Logo.Size = new System.Drawing.Size(217, 57);
             this.lbl_Logo.TabIndex = 0;
             this.lbl_Logo.Text = "SnowFood";
             // 
@@ -72,7 +73,7 @@ namespace asm_DangKi
             this.iBtn_NhanVien.Name = "iBtn_NhanVien";
             this.iBtn_NhanVien.Size = new System.Drawing.Size(294, 80);
             this.iBtn_NhanVien.TabIndex = 1;
-            this.iBtn_NhanVien.Text = "Tài khoản";
+            this.iBtn_NhanVien.Text = "Tài khoản      ";
             this.iBtn_NhanVien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iBtn_NhanVien.UseVisualStyleBackColor = true;
             this.iBtn_NhanVien.Click += new System.EventHandler(this.iBtn_NhanVien_Click);
@@ -111,7 +112,7 @@ namespace asm_DangKi
             this.iBtn_DoiTac.Name = "iBtn_DoiTac";
             this.iBtn_DoiTac.Size = new System.Drawing.Size(294, 80);
             this.iBtn_DoiTac.TabIndex = 3;
-            this.iBtn_DoiTac.Text = "Đối tác  ";
+            this.iBtn_DoiTac.Text = "Đối tác          ";
             this.iBtn_DoiTac.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iBtn_DoiTac.UseVisualStyleBackColor = true;
             this.iBtn_DoiTac.Click += new System.EventHandler(this.iBtn_DoiTac_Click);
@@ -130,7 +131,7 @@ namespace asm_DangKi
             this.iBtn_SanPham.Name = "iBtn_SanPham";
             this.iBtn_SanPham.Size = new System.Drawing.Size(294, 80);
             this.iBtn_SanPham.TabIndex = 4;
-            this.iBtn_SanPham.Text = "Sản phẩm";
+            this.iBtn_SanPham.Text = "Sản phẩm  ";
             this.iBtn_SanPham.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iBtn_SanPham.UseVisualStyleBackColor = true;
             this.iBtn_SanPham.Click += new System.EventHandler(this.iBtn_SanPham_Click);
@@ -149,7 +150,7 @@ namespace asm_DangKi
             this.iBtn_DonHang.Name = "iBtn_DonHang";
             this.iBtn_DonHang.Size = new System.Drawing.Size(294, 80);
             this.iBtn_DonHang.TabIndex = 5;
-            this.iBtn_DonHang.Text = "Đơn hàng";
+            this.iBtn_DonHang.Text = "Đơn hàng  ";
             this.iBtn_DonHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iBtn_DonHang.UseVisualStyleBackColor = true;
             this.iBtn_DonHang.Click += new System.EventHandler(this.iBtn_DonHang_Click);
@@ -176,6 +177,7 @@ namespace asm_DangKi
             // pal_Menu
             // 
             this.pal_Menu.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.pal_Menu.Controls.Add(this.panel2);
             this.pal_Menu.Controls.Add(this.iBtn_KiemKho);
             this.pal_Menu.Controls.Add(this.panel1);
             this.pal_Menu.Controls.Add(this.iBtn_Thoat);
@@ -192,6 +194,14 @@ namespace asm_DangKi
             this.pal_Menu.Size = new System.Drawing.Size(294, 847);
             this.pal_Menu.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Honeydew;
+            this.panel2.Location = new System.Drawing.Point(0, 133);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(297, 5);
+            this.panel2.TabIndex = 8;
+            // 
             // iBtn_KiemKho
             // 
             this.iBtn_KiemKho.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -206,7 +216,7 @@ namespace asm_DangKi
             this.iBtn_KiemKho.Name = "iBtn_KiemKho";
             this.iBtn_KiemKho.Size = new System.Drawing.Size(294, 80);
             this.iBtn_KiemKho.TabIndex = 8;
-            this.iBtn_KiemKho.Text = "Kiểm kho";
+            this.iBtn_KiemKho.Text = "Kiểm kho  ";
             this.iBtn_KiemKho.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iBtn_KiemKho.UseVisualStyleBackColor = true;
             this.iBtn_KiemKho.Click += new System.EventHandler(this.iBtn_KiemKho_Click);
@@ -216,7 +226,7 @@ namespace asm_DangKi
             this.panel1.BackColor = System.Drawing.Color.Honeydew;
             this.panel1.Location = new System.Drawing.Point(0, 691);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 10);
+            this.panel1.Size = new System.Drawing.Size(297, 5);
             this.panel1.TabIndex = 7;
             // 
             // iBtn_Thoat
@@ -270,7 +280,7 @@ namespace asm_DangKi
             this.lab_Content.AutoSize = true;
             this.lab_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Content.ForeColor = System.Drawing.Color.White;
-            this.lab_Content.Location = new System.Drawing.Point(71, 101);
+            this.lab_Content.Location = new System.Drawing.Point(74, 101);
             this.lab_Content.Name = "lab_Content";
             this.lab_Content.Size = new System.Drawing.Size(126, 29);
             this.lab_Content.TabIndex = 0;
@@ -283,11 +293,10 @@ namespace asm_DangKi
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1672, 847);
             this.Controls.Add(this.pal_Menu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
             this.Name = "frm_TrangChu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.pal_Menu.ResumeLayout(false);
             this.pal_Logo.ResumeLayout(false);
             this.pal_Logo.PerformLayout();
@@ -310,5 +319,6 @@ namespace asm_DangKi
         private FontAwesome.Sharp.IconButton iBtn_Thoat;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton iBtn_KiemKho;
+        private System.Windows.Forms.Panel panel2;
     }
 }
