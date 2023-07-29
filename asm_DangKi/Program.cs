@@ -17,7 +17,7 @@ namespace asm_DangKi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_DangKi());
+            Application.Run(new frm_TrangChu());
         }
     }
 }

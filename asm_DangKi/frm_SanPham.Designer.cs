@@ -32,7 +32,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgv_dsSanPhan = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dsSanPhan)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -50,6 +55,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 38);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -78,6 +84,29 @@
             this.tabPage3.Text = "Sửa sản phẩm";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_dsSanPhan);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(38, 238);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1275, 403);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh sách sản phẩm";
+            // 
+            // dgv_dsSanPhan
+            // 
+            this.dgv_dsSanPhan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_dsSanPhan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_dsSanPhan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_dsSanPhan.Location = new System.Drawing.Point(3, 22);
+            this.dgv_dsSanPhan.Name = "dgv_dsSanPhan";
+            this.dgv_dsSanPhan.RowHeadersWidth = 51;
+            this.dgv_dsSanPhan.RowTemplate.Height = 24;
+            this.dgv_dsSanPhan.Size = new System.Drawing.Size(1269, 378);
+            this.dgv_dsSanPhan.TabIndex = 0;
+            // 
             // frm_SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -89,6 +118,9 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.frm_SanPham_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dsSanPhan)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -99,5 +131,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgv_dsSanPhan;
     }
 }
