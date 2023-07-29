@@ -16,7 +16,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=WINFORM;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=LAPTOP-JAKJA372\\TAIMAIKHONGDUOC;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
         private void btn_DangNhap_Click(object sender, EventArgs e)
         {
@@ -51,21 +51,7 @@ namespace asm_DangKi
                 //====================================================
                 else
                 {
-                    /* string commet = @"select * from TAIKHOAN";
 
-                     SqlCommand cmd = new SqlCommand(commet, conn);
-                     SqlDataReader reader = cmd.ExecuteReader();
-                     if (reader.Read())
-                     {
-                         if (txt_SDT.Text != reader["SoDienThoai"].ToString())
-                         {
-                             MessageBox.Show(" Số điện thoại không tồn tại !!! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                         }
-                         else if (txt_TenDangNhap.Text != reader["TenDangNhap"].ToString())
-                         {
-                             MessageBox.Show(" Tên đăng nhập không tồn tại !!! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                         }
-                     }*/
 
                     string query = $"update TAIKHOAN set MatKhau = '{txt_MatKhauMoi.Text}' where TenDangNhap = '{txt_TenDangNhap.Text}'"; // khai báo chuỗi câu lệnh SQL
 
