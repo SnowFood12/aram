@@ -118,7 +118,7 @@ namespace asm_DangKi
             form1.MdiParent = this;
             form1.Show();
             form1.Dock = DockStyle.Fill;
-            lab_Content.Text = iBtn_NhanVien.Text;
+            lab_Content.Text = iBtn_KiemKho.Text;
         }
     }
 }

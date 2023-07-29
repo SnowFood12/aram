@@ -13,6 +13,7 @@ namespace asm_DangKi
 {
     public partial class frm_DangNhap : Form
     {
+        public static string HoVaTen; //Biến toàn cục lưu họ và tên người đăng nhập
         public frm_DangNhap()
         {
             InitializeComponent();
@@ -70,9 +71,8 @@ namespace asm_DangKi
                         frm_TrangChu formTrangChu = new frm_TrangChu();
                         // Lấy tên người dùng từ cột "HoVaTen" trong bảng TAIKHOAN
                         string hoVaTen = reader["HoVaTen"].ToString();
-                        // Chuyển qua form kiểm kho và truyền tên người dùng
-                        frm_KiemKho frmKiemKho = new frm_KiemKho();
-                        frmKiemKho.HoVaTen = hoVaTen;
+                        // gán giá trị cho biến toàn cục
+                        HoVaTen = hoVaTen;
                         formTrangChu.Show();
                         this.Hide();
                     }
@@ -107,7 +107,6 @@ namespace asm_DangKi
         private void lab_Thoat_Click(object sender, EventArgs e)
         {
             Application.Exit(); // đóng form đăng nhập 
-            // jashalahfalsahdlashd
         }
     }
 }
