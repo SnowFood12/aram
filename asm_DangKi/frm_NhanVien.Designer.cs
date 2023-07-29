@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbl_trangChu = new System.Windows.Forms.Label();
             this.txt_MatKhau = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_MatKhau = new System.Windows.Forms.Button();
             this.btn_ThayDoiAnh = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.lbl_Email = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_soDienThoai = new System.Windows.Forms.Label();
@@ -49,7 +49,6 @@
             this.btn_SuaEmail = new System.Windows.Forms.Button();
             this.pic_thongTinTaiKhoan = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.lbl_trangChu = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_thongTinTaiKhoan)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -62,7 +61,6 @@
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.btn_MatKhau);
             this.tabPage2.Controls.Add(this.btn_ThayDoiAnh);
-            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.lbl_Email);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.lbl_soDienThoai);
@@ -87,6 +85,19 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // lbl_trangChu
+            // 
+            this.lbl_trangChu.AutoSize = true;
+            this.lbl_trangChu.BackColor = System.Drawing.Color.Gainsboro;
+            this.lbl_trangChu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lbl_trangChu.ForeColor = System.Drawing.Color.Black;
+            this.lbl_trangChu.Location = new System.Drawing.Point(3, 1);
+            this.lbl_trangChu.Name = "lbl_trangChu";
+            this.lbl_trangChu.Size = new System.Drawing.Size(156, 36);
+            this.lbl_trangChu.TabIndex = 25;
+            this.lbl_trangChu.Text = "Trang Chủ";
+            this.lbl_trangChu.Click += new System.EventHandler(this.lbl_trangChu_Click);
+            // 
             // txt_MatKhau
             // 
             this.txt_MatKhau.BackColor = System.Drawing.SystemColors.Control;
@@ -99,7 +110,7 @@
             this.txt_MatKhau.TabIndex = 24;
             this.txt_MatKhau.UseSystemPasswordChar = true;
             this.txt_MatKhau.TextChanged += new System.EventHandler(this.txt_MatKhau_TextChanged);
-            // 
+            //
             // label4
             // 
             this.label4.AutoSize = true;
@@ -135,17 +146,6 @@
             this.btn_ThayDoiAnh.Text = "Thay đổi ảnh";
             this.btn_ThayDoiAnh.UseVisualStyleBackColor = false;
             this.btn_ThayDoiAnh.Click += new System.EventHandler(this.btn_ThayDoiAnh_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button1.Location = new System.Drawing.Point(1022, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 40);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lbl_Email
             // 
@@ -211,7 +211,7 @@
             this.label2.Text = "Họ và tên";
             // 
             // lbl_taiKhoan
-            // 
+            //
             this.lbl_taiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_taiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_taiKhoan.Location = new System.Drawing.Point(389, 314);
@@ -223,7 +223,7 @@
             // lbl_ThongTinTaiKhoan
             // 
             this.lbl_ThongTinTaiKhoan.AutoSize = true;
-            this.lbl_ThongTinTaiKhoan.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_ThongTinTaiKhoan.BackColor = System.Drawing.Color.Snow;
             this.lbl_ThongTinTaiKhoan.Font = new System.Drawing.Font("Mongolian Baiti", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ThongTinTaiKhoan.Location = new System.Drawing.Point(355, 1);
             this.lbl_ThongTinTaiKhoan.Name = "lbl_ThongTinTaiKhoan";
@@ -316,19 +316,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1165, 944);
             this.tabControl1.TabIndex = 2;
             // 
-            // lbl_trangChu
-            // 
-            this.lbl_trangChu.AutoSize = true;
-            this.lbl_trangChu.BackColor = System.Drawing.Color.Gainsboro;
-            this.lbl_trangChu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lbl_trangChu.ForeColor = System.Drawing.Color.Black;
-            this.lbl_trangChu.Location = new System.Drawing.Point(3, 1);
-            this.lbl_trangChu.Name = "lbl_trangChu";
-            this.lbl_trangChu.Size = new System.Drawing.Size(156, 36);
-            this.lbl_trangChu.TabIndex = 25;
-            this.lbl_trangChu.Text = "Trang Chủ";
-            this.lbl_trangChu.Click += new System.EventHandler(this.lbl_trangChu_Click);
-            // 
             // frm_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -352,7 +339,6 @@
 
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btn_ThayDoiAnh;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbl_Email;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_soDienThoai;

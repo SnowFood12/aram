@@ -52,7 +52,7 @@ namespace asm_DangKi
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         private void lbl_SuaTenDangNhap_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace asm_DangKi
             TenDangNhap.Show();
             this.Hide();
 
-           
+
         }
 
         private void lbl_tenDangNhap_Click(object sender, EventArgs e)
@@ -99,19 +99,18 @@ namespace asm_DangKi
         {
 
         }
-
         private void frm_NhanVien_Load(object sender, EventArgs e)
         {
-           
+
             try
             {
                 conn = new SqlConnection(str);
                 conn.Open();
                 LoadData();
 
-                
-              
-                
+
+
+
             }
             catch (Exception ex)
             {
@@ -126,6 +125,7 @@ namespace asm_DangKi
 
             try
             {
+
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Image Files (*.jpg;*.png)|*.jpg;*.png|All files (*.*)|*.*";
                 // Kiểm tra đã chọn tập tin ảnh hay chưa
@@ -186,7 +186,7 @@ namespace asm_DangKi
             frm_TrangChu trangChu = new frm_TrangChu();
             trangChu.Show();
             this.Hide();
-           
+
         }
     }
 }
