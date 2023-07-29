@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+<<<<<<< HEAD
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbo_LuaChonSanPham = new System.Windows.Forms.ComboBox();
             this.txt_DonGia = new System.Windows.Forms.TextBox();
@@ -90,6 +91,11 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lstv_ThongTinGiaoDich = new System.Windows.Forms.ListView();
             this.btn_ThemVaoDonHang = new System.Windows.Forms.Button();
+=======
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+>>>>>>> origin/TaiKhoan_PhanThanhCham
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -134,6 +140,7 @@
             this.tabPage1.Size = new System.Drawing.Size(1372, 805);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tạo hoá đơn";
+<<<<<<< HEAD
             // 
             // groupBox4
             // 
@@ -634,6 +641,19 @@
             this.btn_ThanhToan.TabIndex = 2;
             this.btn_ThanhToan.Text = "Thanh toán";
             this.btn_ThanhToan.UseVisualStyleBackColor = true;
+=======
+            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(329, 233);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(306, 106);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+>>>>>>> origin/TaiKhoan_PhanThanhCham
             // 
             // tabPage2
             // 
@@ -663,6 +683,7 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Chức năng";
             // 
+<<<<<<< HEAD
             // btn_XoaLichSuGiaoDich
             // 
             this.btn_XoaLichSuGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -756,6 +777,8 @@
             this.btn_ThemVaoDonHang.Text = "Thêm vào đơn hàng";
             this.btn_ThemVaoDonHang.UseVisualStyleBackColor = true;
             // 
+=======
+>>>>>>> origin/TaiKhoan_PhanThanhCham
             // frm_DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);

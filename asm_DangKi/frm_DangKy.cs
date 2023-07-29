@@ -93,6 +93,7 @@ namespace asm_DangKi
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi: " + ex); // bẫy lỗi 
+                //PUSH NHÁNH SỬA CỦA TAO NÈ
             }
 
 

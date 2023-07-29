@@ -388,7 +388,5 @@ namespace asm_DangKi
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
         }
-
-        
     }
 }

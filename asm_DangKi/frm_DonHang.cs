@@ -125,5 +125,10 @@ namespace asm_DangKi
                 }
             } // thay đổi các textbox khi đổi dữ liệu trong combobox
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            //MÁ SAO PUSH MÃI KHÔNG ĐƯỢC TAÂSASA
+        }
     }
 }
