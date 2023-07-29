@@ -21,7 +21,6 @@ C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_NhanVien.resources
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_KiemKho.resources
 <<<<<<< HEAD
-<<<<<<< HEAD
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\frm_ASM\asm_DangKi\bin\Debug\asm_DangKi.exe.config
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\frm_ASM\asm_DangKi\bin\Debug\asm_DangKi.exe
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\frm_ASM\asm_DangKi\bin\Debug\asm_DangKi.pdb
@@ -67,7 +66,7 @@ C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.exe
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.pdb
 >>>>>>> origin/kiemKho_LEPHILONG
-=======
+>>>>>>> origin/TaiKhoan_PhanThanhCham
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.exe.config
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.exe
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.pdb
@@ -90,4 +89,15 @@ C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_Da
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.CopyComplete
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.exe
 C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.pdb
->>>>>>> origin/TaiKhoan_PhanThanhCham
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_TenDangNhap.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_SuaMatKhau.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_HoVaTen.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_SoDienThoai.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_MatKhau.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_Email.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_Email.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_HoVaTen.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_MatKhau.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SoDienThoai.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SuaMatKhau.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_TenDangNhap.resources

@@ -63,9 +63,59 @@ namespace asm_DangKi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_double_left_48 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-double-left-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_double_left_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-double-left-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_left_arrow_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-left-arrow-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap image_account {
             get {
                 object obj = ResourceManager.GetObject("image_account", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap muitentrolai {
+            get {
+                object obj = ResourceManager.GetObject("muitentrolai", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap muiTnChuyenDong {
+            get {
+                object obj = ResourceManager.GetObject("muiTnChuyenDong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

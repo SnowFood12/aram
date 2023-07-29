@@ -17,11 +17,9 @@ namespace asm_DangKi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-<<<<<<< HEAD
-            Application.Run(new frm_DangNhap());
-=======
+
+            
             Application.Run(new frm_NhanVien());
->>>>>>> origin/TaiKhoan_PhanThanhCham
         }
     }
 }
