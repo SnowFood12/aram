@@ -20,6 +20,30 @@ C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_DoiTac.resources
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_NhanVien.resources
 C:\Users\LE SY KIEN\OneDrive\Máy tính\Ki3\WinForm\asm\asm_DangKi\obj\Debug\asm_DangKi.frm_KiemKho.resources
+<<<<<<< HEAD
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.exe.config
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.exe
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\asm_DangKi.pdb
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.AssemblyReference.cache
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.SuggestedBindingRedirects.cache
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_DoiTac.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_DonHang.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_KiemKho.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_NhanVien.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_TrangChuCon.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_SanPham.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_DangKi.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_DangNhap.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_QuenMK.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_TrangChu.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.Properties.Resources.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.GenerateResource.cache
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.CoreCompileInputs.cache
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.csproj.CopyComplete
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.exe
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.pdb
+=======
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\asm_DangKi.exe.config
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\asm_DangKi.exe
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\asm_DangKi.pdb
@@ -63,3 +87,17 @@ D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.csproj.CoreCompileIn
 D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.csproj.CopyComplete
 D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.exe
 D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.pdb
+>>>>>>> origin/kiemKho_LEPHILONG
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_TenDangNhap.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_SuaMatKhau.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_HoVaTen.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_SoDienThoai.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_MatKhau.resources
+C:\Users\ADMINs\Desktop\LAP_TRINH-3\SnowFood_PK03012\asm_DangKi\obj\Debug\asm_DangKi.frm_Email.resources
+>>>>>>> origin/TaiKhoan_PhanThanhCham
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_Email.resources
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_HoVaTen.resources
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_MatKhau.resources
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SoDienThoai.resources
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SuaMatKhau.resources
+D:\FPT\C#-3\Assignment\aram\asm_DangKi\obj\Debug\asm_DangKi.frm_TenDangNhap.resources
