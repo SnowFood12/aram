@@ -24,11 +24,27 @@ namespace asm_DangKi
         }
         private void frm_SanPham_Load(object sender, EventArgs e)
         {
+            try
+            {
+                conn = new SqlConnection(str);
+                conn.Open();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            string strcmd = @"select * from SanPham";
+            SqlCommand cmd = new SqlCommand(strcmd, conn);
+            SqlDataAdapter adt = new SqlDataAdapter(cmd);
+            DataTable adt_SanPham = new DataTable();
+            adt.Fill(adt_SanPham);
+            dgv_dsSanPham.DataSource = adt_SanPham;
+            conn.Close();
         }
 
-    
-        
+
+
 
 
     }
