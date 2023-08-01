@@ -21,22 +21,32 @@ namespace asm_DangKi
         string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True";
         SqlConnection conn = null;
         int viTri = -1;
+
         public frm_DonHang()
         {
             InitializeComponent();
             // gọi hàm load dữ liệu 
             LoadDuLieuVaocbo_SanPham();
+
             // gọi hàm load cbo_DoiTac 
             LoadDuLieuVaocbo_DoiTac();
+
             // gọi hàm load txt_NhanVienTaoHoaDon
             Loadtxt_TenNhanVien();
 
+            // gọi hàm load bảng giao dịch
             LoadBangGiaoDich();
 
+            // tính tổng doanh thu
             TongDoanhThu();
+
             txt_SoLuong.ReadOnly = true;
 
         }
+
+        //=========================================
+
+        // load dữ liệu vào cbo_LuaChonSanPham
         public void LoadDuLieuVaocbo_SanPham()
         {
             try
@@ -57,8 +67,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load dữ liệu vào cbo_LuaChonSanPham
+        }
 
+        //=========================================
+
+        // load dữ liệu vào cbo_DoiTac
         public void LoadDuLieuVaocbo_DoiTac()
         {
             try
@@ -79,8 +92,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load dữ liệu vào cbo_DoiTac
+        }
 
+        //=========================================
+
+        // load dữ liệu để thêm vào txt_NhanVienTaoHoaDon
         public void Loadtxt_TenNhanVien()
         {
             try
@@ -102,8 +118,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load dữ liệu để thêm vào txt_NhanVienTaoHoaDon
+        }
 
+        //=========================================
+
+        // load dữ liệu của bảng hoá đơn 
         public void LoadDatagridviewHoaDon()
         {
             try
@@ -123,8 +142,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load dữ liệu của bảng hoá đơn 
+        }
 
+        //=========================================
+
+        // load dữ liệu của bảng đơn hàng 
         public void LoadDataGridViewDoHang()
         {
             try
@@ -144,8 +166,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load dữ liệu của bảng đơn hàng 
+        }
 
+        //=========================================
+
+        // thay đổi các textbox khi đổi dữ liệu trong combobox
         private void cbo_LuaChonSanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -170,8 +195,11 @@ namespace asm_DangKi
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-        } // thay đổi các textbox khi đổi dữ liệu trong combobox
+        }
 
+        //=========================================
+
+        // thay đổi các textbox khi đổi dữ liệu trong combobox
         private void cbo_TenDoiTac_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -194,8 +222,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // thay đổi các textbox khi đổi dữ liệu trong combobox
+        }
 
+        //=========================================
+
+        // tạo hoá đơn mới khi click vào button
         private void btn_TaoHoaDon_Click(object sender, EventArgs e)
         {
             try
@@ -209,19 +240,18 @@ namespace asm_DangKi
                     ThemHoaDon();
                     txt_MaHoaDon.ReadOnly = true;
                     btn_TaoHoaDon.Hide();
-                    /*                    btn_SuaDonHang.Show();
-                                        btn_ThanhToan.Show();
-                                        btn_XoaDonHang.Show();
-                                        btn_ThemVaoDonHang.Show();*/
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // tạo hoá đơn mới khi click vào button
+        }
 
-        public void ThemHoaDon() // tạo hoá đơn 
+        //=========================================
+
+        // tạo hoá đơn 
+        public void ThemHoaDon() 
         {
             using (conn = new SqlConnection(str))
             {
@@ -248,6 +278,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // thêm sản phẩm vào đơn hàng
         public void ThemSanPhamVaoDonHang()
         {
             using (conn = new SqlConnection(str))
@@ -273,12 +306,17 @@ namespace asm_DangKi
                 dataAdapter.Update(dataSet.Tables["HoaDon_dsSanPham"]);
                 LoadDatagridviewHoaDon();
             }
-        } // thêm sản phẩm vào đơn hàng
+        }
 
+        //=========================================
+
+        // tính tổng tiền khi thêm sản phẩm vào đơn hàng
         public void TongTienDonHang()
         {
             int tongTienDonHang = int.Parse(txt_TongTien.Text);
             int tongTien = 0;
+
+            // lấy giá trị tổng tiền ban đầu của hoá đơn 
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -290,8 +328,9 @@ namespace asm_DangKi
                 {
                     tongTien = int.Parse(reader["TongTien"].ToString());
                 }
-            } // lấy giá trị tổng tiền ban đầu của hoá đơn 
+            }
 
+            // cập nhật tổng tiền trong hoá đơn 
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -301,10 +340,13 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
                 LoadDatagridviewHoaDon();
                 txt_TongTienHoaDon.Text = (tongTien + tongTienDonHang).ToString();
-            } // cập nhật tổng tiền trong hoá đơn 
+            } 
 
-        }  // tính tổng tiền khi thêm sản phẩm vào đơn hàng
+        }
 
+        //=========================================
+
+        // Giảm số lượng tồn kho khi thêm sản phẩm vào đơn hàng ( số lượng tồn kho mới = số lượng đơn hàng - số lượng tồn kho cũ)
         public void SoLuongSauKhiThemDonHang()
         {
             int soLuong = int.Parse(txt_SoLuong.Text);
@@ -321,8 +363,11 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
                 txt_HangTonKho.Text = soLuongConLai.ToString();
             }
-        } // Giảm số lượng tồn kho khi thêm sản phẩm vào đơn hàng ( số lượng tồn kho mới = số lượng đơn hàng - số lượng tồn kho cũ)
+        }
 
+        //=========================================
+
+        // xử lý sự kiện khi click vào button thêm vào đơn hàng
         private void btn_ThemVaoDonHang_Click(object sender, EventArgs e)
         {
             try
@@ -349,6 +394,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // xử lý sự kiện khi nhập số lượng vào txt_SoLuong
         private void txt_SoLuong_TextChanged(object sender, EventArgs e)
         {
             int soLuong = 0;
@@ -356,6 +404,10 @@ namespace asm_DangKi
             int tongTien = soLuong * int.Parse(txt_DonGia.Text); // giá tiền của mỗi sản phẩm
             txt_TongTien.Text = tongTien.ToString();
         }
+
+        //=========================================
+
+        // xoá sản phẩm trong đơn hàng khi click vào button
         private void btn_XoaDonHang_Click(object sender, EventArgs e)
         {
             try
@@ -368,8 +420,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }  // xoá sản phẩm trong đơn hàng khi click vào button
+        }
 
+        //=========================================
+
+        // xử lý sự kiện khi click vào datagrilview
         private void dgv_ThonTinDonHangSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -396,6 +451,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // xoá sản phẩm trong đơn hàng 
         public void XoaSanPhamTrongDonHang()
         {
             using (conn = new SqlConnection(str))
@@ -412,8 +470,11 @@ namespace asm_DangKi
                 adapter.Update(dataSet.Tables["HoaDon_dsSanPham"]);
                 LoadDataGridViewDoHang();
             }
-        } // xoá sản phẩm trong đơn hàng 
+        }
 
+        //=========================================
+
+        // số lượng sản phẩm sau khi xoá sản phẩm trong đơn hàng
         public void SoLuongSauKhiXoaSanPhamTrongDonHang()
         {
             int soLuong = int.Parse(txt_SoLuong.Text);
@@ -430,8 +491,11 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
                 txt_HangTonKho.Text = soLuongConLai.ToString();
             }
-        } // số lượng sản phẩm sau khi xoá sản phẩm trong đơn hàng
+        }
 
+        //=========================================
+
+        // tổng tiền sau khi xoá sản phẩm trong đơn hàng
         public void TongTienSauKhiXoaSanPhamTrongDonHang()
         {
             int tongTienDonHang = int.Parse(txt_TongTien.Text);
@@ -461,6 +525,9 @@ namespace asm_DangKi
             } // cập nhật tổng tiền trong hoá đơn 
         }
 
+        //=========================================
+
+        // sửa số lượng sản phẩm trong đơn hàng sau khi cick vào button
         private void btn_SuaDonHang_Click(object sender, EventArgs e)
         {
             try
@@ -473,8 +540,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // sửa số lượng sản phẩm trong đơn hàng sau khi cick vào button
+        }
 
+        //=========================================
+
+        // sữa số lượng sản phẩm trong đơn hàng 
         public void SuaSanPhamTrongDonHang()
         {
             using (conn = new SqlConnection(str))
@@ -496,8 +566,11 @@ namespace asm_DangKi
                 adapter.Update(dataSet.Tables["HoaDon_dsSanPham"]);
                 LoadDataGridViewDoHang();
             }
-        } // sữa số lượng sản phẩm trong đơn hàng 
+        }
 
+        //=========================================
+
+        // số lượng sau khi sữa sản phẩm trong đơn hàng
         public void SoLuongSauKhiSuaSanPhamTrongDonHang()
         {
             int soLuong = 0;
@@ -532,6 +605,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // tổng giá sau khi sữa sản phẩm trong đơn hàng 
         public void TongGiaSauKhiSuaSanPhamTrongDonHang()
         {
             int tongGiaMoi = int.Parse(txt_TongTien.Text);
@@ -576,10 +652,9 @@ namespace asm_DangKi
 
         }
 
-        private void btn_HuyHoaDon_Click(object sender, EventArgs e)
-        {
-        }
+        //=========================================
 
+        // sữ lý sự kiện khi click vào button thanh toán
         private void btn_ThanhToan_Click(object sender, EventArgs e)
         {
             try
@@ -593,6 +668,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // thêm vào bảng giao dịch khi click vào button thanh toán
         public void ThemHoaDonVaoBangGiaoDich()
         {
             using (conn = new SqlConnection(str))
@@ -614,8 +692,11 @@ namespace asm_DangKi
             }
             dgv_DonHang.DataSource = null;
             dgv_ThonTinDonHangSanPham.DataSource = null;
-        } // thêm vào bảng giao dịch khi click vào button thanh toán
+        }
 
+        //=========================================
+
+        // load bảng giao dịch 
         public void LoadBangGiaoDich()
         {
             try
@@ -635,8 +716,11 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        } // load bảng giao dịch 
+        }
 
+        //=========================================
+
+        // hiện thi các sản phẩm trong đơn hàng đã được giao dịch
         private void dgv_GiaoDich_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -680,6 +764,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // xuất file excel
         public void XuatFileExcel()
         {
             using (conn = new SqlConnection(str))
@@ -713,10 +800,22 @@ namespace asm_DangKi
                 using (var fileStream = new FileStream("DoanhThu.xlsx", FileMode.Create, FileAccess.Write))
                 {
                     wb.Write(fileStream);
-                }
+                } 
+            }
+
+            // xoá toàn bộ dữ liệu trong bảng giao dịch sau khi xuất file
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "TRUNCATE TABLE GiaoDich"; 
+                SqlCommand cmd = new SqlCommand( query , conn );    
+                cmd.ExecuteNonQuery();
             }
         }
 
+        //=========================================
+
+        // tính tổng doanh thu bán hàng
         public void TongDoanhThu()
         {
             txt_TongDoanhThu.ReadOnly = true;
@@ -739,6 +838,9 @@ namespace asm_DangKi
             }
         }
 
+        //=========================================
+
+        // xử lý sự kiện khi click vào button xuất file
         private void btn_XuatFile_Click(object sender, EventArgs e)
         {
             try
@@ -752,5 +854,7 @@ namespace asm_DangKi
                 MessageBox.Show("Lỗi" + ex, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             }
         }
+
+        //=========================================
     }
 }
