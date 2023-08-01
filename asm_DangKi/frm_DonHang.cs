@@ -10,8 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Media.Media3D;
-/*using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;*/
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 
 namespace asm_DangKi
 
@@ -682,7 +682,39 @@ namespace asm_DangKi
 
         public void XuatFileExcel()
         {
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "SELECT * FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
 
+                IWorkbook wb = new XSSFWorkbook();
+
+                ISheet sheet = wb.CreateSheet("DoanhThu");
+
+                IRow cells = sheet.CreateRow(0);
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    cells.CreateCell(i).SetCellValue(dt.Columns[i].ColumnName);
+                }
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dataRow = dt.Rows[i];
+                    IRow row = sheet.CreateRow(i + 1);
+
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        row.CreateCell(j).SetCellValue(dataRow[j].ToString());
+                    }
+                }
+                using (var fileStream = new FileStream("DoanhThu.xlsx", FileMode.Create, FileAccess.Write))
+                {
+                    wb.Write(fileStream);
+                }
+            }
         }
 
         public void TongDoanhThu()
@@ -707,5 +739,18 @@ namespace asm_DangKi
             }
         }
 
+        private void btn_XuatFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                XuatFileExcel();
+                MessageBox.Show("Xuất file thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi" + ex, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

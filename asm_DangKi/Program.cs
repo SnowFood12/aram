@@ -19,7 +19,7 @@ namespace asm_DangKi
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            Application.Run(new frm_TrangChu());
+            Application.Run(new frm_DangNhap());
 
         }
     }
