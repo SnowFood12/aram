@@ -19,7 +19,7 @@ namespace asm_DangKi
             InitializeComponent();
         }
 
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
 
         public void LoadData()

@@ -25,6 +25,7 @@ namespace asm_DangKi
         public frm_DonHang()
         {
             InitializeComponent();
+
             // gọi hàm load dữ liệu 
             LoadDuLieuVaocbo_SanPham();
 
@@ -532,9 +533,12 @@ namespace asm_DangKi
         {
             try
             {
-                SuaSanPhamTrongDonHang();
+
                 SoLuongSauKhiSuaSanPhamTrongDonHang();
                 TongGiaSauKhiSuaSanPhamTrongDonHang();
+                SuaSanPhamTrongDonHang();
+                LoadDatagridviewHoaDon();
+
             }
             catch (Exception ex)
             {
@@ -571,28 +575,48 @@ namespace asm_DangKi
         //=========================================
 
         // số lượng sau khi sữa sản phẩm trong đơn hàng
+
         public void SoLuongSauKhiSuaSanPhamTrongDonHang()
         {
-            int soLuong = 0;
+            int soLuong = 0; 
             int soLuongTonKho = int.Parse(txt_HangTonKho.Text);
             int soLuongMoi = int.Parse(txt_SoLuong.Text);
+
 
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
-                string query = "select * from HoaDon_dsSanPham where MaSanPham = @Ma ";
+                string query = "select * from HoaDon_dsSanPham where MaSanPham = @Ma  and MaHoaDon = @MaHoaDon ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Ma", cbo_LuaChonSanPham.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@MaHoaDon", txt_MaHoaDon.Text);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     soLuong = int.Parse(reader["SoLuong"].ToString());
                 }
-            } // lấy giá trị tổng tiền ban đầu của hoá đơn 
+            } // lấy số lượng ban đầu trong đơn hàng
 
-            int khoangChenhLech = soLuongMoi - soLuong;
-            int soLuongConLai = soLuongTonKho - khoangChenhLech;
+            int khoangChenhLech = 0;
+            int soLuongConLai = 0;
 
+            if ( soLuong < soLuongMoi)
+            {
+                khoangChenhLech = soLuongMoi - soLuong;
+                soLuongConLai = soLuongTonKho - khoangChenhLech;
+                CapNhatSoLuong(soLuongConLai); 
+            }
+            else if ( soLuong > soLuongMoi)
+            {
+                khoangChenhLech = soLuong - soLuongMoi; 
+                soLuongConLai = soLuongTonKho + khoangChenhLech;
+                CapNhatSoLuong(soLuongConLai) ;
+            }
+
+        } 
+                                                        
+        public void CapNhatSoLuong(int soLuongConLai)
+        {
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -616,15 +640,17 @@ namespace asm_DangKi
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
-                string query = "select * from HoaDon_dsSanPham where MaSanPham = @Ma ";
+                string query = "select * from HoaDon_dsSanPham where MaSanPham = @Ma  and MaHoaDon = @MaHoaDon ";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Ma", cbo_LuaChonSanPham.SelectedValue.ToString());
+                cmd.Parameters.AddWithValue("@MaHoaDon", txt_MaHoaDon.Text);
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     tongGiaCu = int.Parse(reader["TongTien"].ToString());
                 }
             } // lấy giá trị tổng tiền ban đầu của sản phẩm
+            MessageBox.Show(tongGiaCu.ToString()); 
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -637,8 +663,27 @@ namespace asm_DangKi
                     tongGiaHoaDon = int.Parse(reader["TongTien"].ToString());
                 }
             } // lấy giá trị tổng tiền ban đầu của hoá đơn 
-            int khoangChenhLech = tongGiaMoi - tongGiaCu;
-            int tongTienHoaDonMoi = tongGiaHoaDon + khoangChenhLech;
+            MessageBox.Show(tongGiaHoaDon.ToString());
+            int khoangChenhLech = 0; 
+            int tongTienHoaDonMoi =  0; 
+            if ( tongGiaCu < tongTienHoaDonMoi)
+            {
+                khoangChenhLech = tongGiaMoi - tongGiaCu;
+                tongTienHoaDonMoi = tongGiaHoaDon + khoangChenhLech;
+                CapNhatGiaTien(tongTienHoaDonMoi); 
+            }
+            else if ( tongGiaCu > tongGiaMoi)
+            {
+                khoangChenhLech = tongGiaCu - tongGiaMoi;
+                tongTienHoaDonMoi = tongGiaHoaDon - khoangChenhLech;
+                CapNhatGiaTien(tongTienHoaDonMoi); 
+            }
+
+
+        }
+
+        public void CapNhatGiaTien( int tongTienHoaDonMoi)
+        {
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -649,9 +694,7 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
                 txt_TongTienHoaDon.Text = tongTienHoaDonMoi.ToString();
             }
-
         }
-
         //=========================================
 
         // sữ lý sự kiện khi click vào button thanh toán
@@ -661,6 +704,7 @@ namespace asm_DangKi
             {
                 ThemHoaDonVaoBangGiaoDich();
                 TongDoanhThu();
+
             }
             catch (Exception ex)
             {
@@ -811,6 +855,7 @@ namespace asm_DangKi
                 SqlCommand cmd = new SqlCommand( query , conn );    
                 cmd.ExecuteNonQuery();
             }
+            txt_TongDoanhThu.Clear(); 
         }
 
         //=========================================
@@ -833,7 +878,6 @@ namespace asm_DangKi
                         tong += int.Parse(sqlDataReader["TongTien"].ToString());
                     }
                     txt_TongDoanhThu.Text = tong.ToString();
-
                 }
             }
         }
@@ -847,7 +891,8 @@ namespace asm_DangKi
             {
                 XuatFileExcel();
                 MessageBox.Show("Xuất file thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-
+                dgv_ThongTinSanPhamGiaoDich.DataSource = null; 
+                LoadBangGiaoDich();
             }
             catch (Exception ex)
             {
