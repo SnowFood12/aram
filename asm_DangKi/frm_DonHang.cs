@@ -43,6 +43,12 @@ namespace asm_DangKi
 
             txt_SoLuong.ReadOnly = true;
 
+            btn_Huy.Hide();
+
+            btn_SuaDonHang.Enabled = false; 
+            btn_ThanhToan.Enabled = false;
+            btn_ThemVaoDonHang.Enabled = false;
+            btn_XoaDonHang.Enabled = false;
         }
 
         //=========================================
@@ -239,8 +245,11 @@ namespace asm_DangKi
                 else
                 {
                     ThemHoaDon();
+
                     txt_MaHoaDon.ReadOnly = true;
                     btn_TaoHoaDon.Hide();
+                    btn_Huy.Show();
+                    btn_ThemVaoDonHang.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -386,6 +395,8 @@ namespace asm_DangKi
                     LoadDataGridViewDoHang();
                     TongTienDonHang();
                     SoLuongSauKhiThemDonHang();
+
+                    btn_ThanhToan.Enabled = true;
                 }
 
             }
@@ -413,9 +424,18 @@ namespace asm_DangKi
         {
             try
             {
-                XoaSanPhamTrongDonHang();
-                SoLuongSauKhiXoaSanPhamTrongDonHang();
-                TongTienSauKhiXoaSanPhamTrongDonHang();
+                DialogResult result = MessageBox.Show("Bạn có muốn xoá không !!!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if ( result == DialogResult.OK)
+                {
+                    XoaSanPhamTrongDonHang();
+                    SoLuongSauKhiXoaSanPhamTrongDonHang();
+                    TongTienSauKhiXoaSanPhamTrongDonHang();
+
+                    btn_SuaDonHang.Enabled = false;
+                    btn_ThanhToan.Enabled = true;
+                    btn_ThemVaoDonHang.Enabled = true;
+                    btn_XoaDonHang.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
@@ -430,26 +450,35 @@ namespace asm_DangKi
         {
             try
             {
-                using (conn = new SqlConnection(str))
+                if (e.RowIndex >= 0)
                 {
-                    string query = $"select * from HoaDon_dsSanPham where MaHoaDon = '{txt_MaHoaDon.Text}'";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataSet dataSet = new DataSet();
-                    SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(adapter);
+                    using (conn = new SqlConnection(str))
+                    {
+                        string query = $"select * from HoaDon_dsSanPham where MaHoaDon = '{txt_MaHoaDon.Text}'";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet dataSet = new DataSet();
+                        SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(adapter);
 
-                    adapter.Fill(dataSet, "HoaDon_dsSanPham");
-                    viTri = e.RowIndex;
-                    DataRow dataRow = dataSet.Tables["HoaDon_dsSanPham"].Rows[viTri];
-                    cbo_LuaChonSanPham.SelectedValue = dataRow["MaSanPham"].ToString();
-                    txt_SoLuong.Text = dataRow["SoLuong"].ToString();
-                    txt_TongTien.Text = dataRow["TongTien"].ToString();
+                        adapter.Fill(dataSet, "HoaDon_dsSanPham");
+                        viTri = e.RowIndex;
+                        DataRow dataRow = dataSet.Tables["HoaDon_dsSanPham"].Rows[viTri];
+                        cbo_LuaChonSanPham.SelectedValue = dataRow["MaSanPham"].ToString();
+                        txt_SoLuong.Text = dataRow["SoLuong"].ToString();
+                        txt_TongTien.Text = dataRow["TongTien"].ToString();
+                    }
+
+                    btn_SuaDonHang.Enabled = true;
+                    btn_ThanhToan.Enabled = false;
+                    btn_ThemVaoDonHang.Enabled = false;
+                    btn_XoaDonHang.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            
         }
 
         //=========================================
@@ -522,7 +551,7 @@ namespace asm_DangKi
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
                 LoadDatagridviewHoaDon();
-                txt_TongTienHoaDon.Text = (tongTien + tongTienDonHang).ToString();
+                txt_TongTienHoaDon.Text = (tongTien - tongTienDonHang).ToString();
             } // cập nhật tổng tiền trong hoá đơn 
         }
 
@@ -533,12 +562,18 @@ namespace asm_DangKi
         {
             try
             {
-
-                SoLuongSauKhiSuaSanPhamTrongDonHang();
-                TongGiaSauKhiSuaSanPhamTrongDonHang();
-                SuaSanPhamTrongDonHang();
-                LoadDatagridviewHoaDon();
-
+                DialogResult result = MessageBox.Show("Bạn có muốn sửa không !!!" , "Thông báo" , MessageBoxButtons.OKCancel , MessageBoxIcon.Question );
+                if (result == DialogResult.OK)
+                {
+                    SoLuongSauKhiSuaSanPhamTrongDonHang();
+                    TongGiaSauKhiSuaSanPhamTrongDonHang();
+                    SuaSanPhamTrongDonHang();
+                    
+                    btn_SuaDonHang.Enabled = false;
+                    btn_ThanhToan.Enabled = true;
+                    btn_ThemVaoDonHang.Enabled = true;
+                    btn_XoaDonHang.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
@@ -650,7 +685,7 @@ namespace asm_DangKi
                     tongGiaCu = int.Parse(reader["TongTien"].ToString());
                 }
             } // lấy giá trị tổng tiền ban đầu của sản phẩm
-            MessageBox.Show(tongGiaCu.ToString()); 
+
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -663,10 +698,10 @@ namespace asm_DangKi
                     tongGiaHoaDon = int.Parse(reader["TongTien"].ToString());
                 }
             } // lấy giá trị tổng tiền ban đầu của hoá đơn 
-            MessageBox.Show(tongGiaHoaDon.ToString());
-            int khoangChenhLech = 0; 
-            int tongTienHoaDonMoi =  0; 
-            if ( tongGiaCu < tongTienHoaDonMoi)
+
+            int khoangChenhLech = 0 ; 
+            int tongTienHoaDonMoi = 0 ; 
+            if ( tongGiaCu < tongGiaMoi)
             {
                 khoangChenhLech = tongGiaMoi - tongGiaCu;
                 tongTienHoaDonMoi = tongGiaHoaDon + khoangChenhLech;
@@ -678,7 +713,7 @@ namespace asm_DangKi
                 tongTienHoaDonMoi = tongGiaHoaDon - khoangChenhLech;
                 CapNhatGiaTien(tongTienHoaDonMoi); 
             }
-
+            LoadDatagridviewHoaDon();
 
         }
 
@@ -705,6 +740,25 @@ namespace asm_DangKi
                 ThemHoaDonVaoBangGiaoDich();
                 TongDoanhThu();
 
+                btn_TaoHoaDon.Show();
+
+                txt_MaHoaDon.ReadOnly = false; 
+
+                txt_MaHoaDon.Clear();
+                txt_HangTonKho.Clear();
+
+                txt_SoLuong.ReadOnly = true;
+
+                txt_SoLuong.Clear();
+                txt_TongTien.Clear();
+                txt_TongTienHoaDon.Clear();
+                txt_DonGia.Clear();
+                btn_Huy.Hide();
+
+                btn_SuaDonHang.Enabled = false;
+                btn_ThanhToan.Enabled = false;
+                btn_ThemVaoDonHang.Enabled = false;
+                btn_XoaDonHang.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -819,7 +873,7 @@ namespace asm_DangKi
                 string query = "SELECT * FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+                DataTable dt = new DataTable(); 
                 dataAdapter.Fill(dt);
 
                 IWorkbook wb = new XSSFWorkbook();
@@ -855,6 +909,23 @@ namespace asm_DangKi
                 SqlCommand cmd = new SqlCommand( query , conn );    
                 cmd.ExecuteNonQuery();
             }
+
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "DELETE FROM HoaDon_dsSanPham";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "DELETE FROM HoaDon";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+
             txt_TongDoanhThu.Clear(); 
         }
 
@@ -889,15 +960,77 @@ namespace asm_DangKi
         {
             try
             {
-                XuatFileExcel();
-                MessageBox.Show("Xuất file thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                dgv_ThongTinSanPhamGiaoDich.DataSource = null; 
-                LoadBangGiaoDich();
+                DialogResult result = MessageBox.Show("Bạn các muốn xuất file không !!!!\nKhi xuất file sẽ xoá toàn bộ dữ liệu trong SQL" , "Thông báo" , MessageBoxButtons.OKCancel , MessageBoxIcon.Question);
+                if ( result == DialogResult.OK)
+                {
+                    XuatFileExcel();
+                    MessageBox.Show("Xuất file thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    dgv_ThongTinSanPhamGiaoDich.DataSource = null;
+                    LoadBangGiaoDich();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi" + ex, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             }
+        }
+
+        //=========================================
+
+        // xử lý sự kiện huỷ khi click vào button huy
+        private void btn_Huy_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn huỷ không !!!!" , "Thông báo" , MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if ( result == DialogResult.OK)
+            {
+                HuyHoaDon();
+            }
+        }
+
+        //=========================================
+
+        // huỷ hoá đơn
+        public void HuyHoaDon()
+        {
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "DELETE FROM HoaDon_dsSanPham where MaHoaDon = @ma";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ma" , txt_MaHoaDon.Text);
+                cmd.ExecuteNonQuery();
+            }
+
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "DELETE FROM HoaDon where MaHoaDon = @ma";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ma", txt_MaHoaDon.Text);
+                cmd.ExecuteNonQuery();
+            }
+            dgv_DonHang.DataSource = null;
+            dgv_ThonTinDonHangSanPham.DataSource = null;
+
+            btn_TaoHoaDon.Show();
+            txt_MaHoaDon.ReadOnly = false;
+
+            txt_MaHoaDon.Clear();
+            txt_HangTonKho.Clear();
+
+            txt_SoLuong.ReadOnly = true;
+
+            txt_SoLuong.Clear();
+            txt_TongTien.Clear();
+            txt_TongTienHoaDon.Clear();
+            txt_DonGia.Clear();
+
+            btn_Huy.Hide();
+
+            btn_SuaDonHang.Enabled = false;
+            btn_ThanhToan.Enabled = false;
+            btn_ThemVaoDonHang.Enabled = false;
+            btn_XoaDonHang.Enabled = false;
         }
 
         //=========================================

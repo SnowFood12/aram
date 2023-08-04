@@ -77,6 +77,7 @@
             this.dgv_ThongTinSanPhamGiaoDich = new System.Windows.Forms.DataGridView();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.dgv_GiaoDich = new System.Windows.Forms.DataGridView();
+            this.btn_Huy = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -122,6 +123,7 @@
             // 
             this.groupBox13.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox13.Controls.Add(this.btn_ThanhToan);
+            this.groupBox13.Controls.Add(this.btn_Huy);
             this.groupBox13.Controls.Add(this.btn_TaoHoaDon);
             this.groupBox13.Controls.Add(this.btn_SuaDonHang);
             this.groupBox13.Controls.Add(this.btn_XoaDonHang);
@@ -138,7 +140,7 @@
             // 
             this.btn_ThanhToan.Location = new System.Drawing.Point(42, 238);
             this.btn_ThanhToan.Name = "btn_ThanhToan";
-            this.btn_ThanhToan.Size = new System.Drawing.Size(173, 37);
+            this.btn_ThanhToan.Size = new System.Drawing.Size(173, 43);
             this.btn_ThanhToan.TabIndex = 3;
             this.btn_ThanhToan.Text = "Thanh toán";
             this.btn_ThanhToan.UseVisualStyleBackColor = true;
@@ -162,7 +164,7 @@
             this.btn_SuaDonHang.Name = "btn_SuaDonHang";
             this.btn_SuaDonHang.Size = new System.Drawing.Size(173, 42);
             this.btn_SuaDonHang.TabIndex = 2;
-            this.btn_SuaDonHang.Text = "Sữa đơn hàng";
+            this.btn_SuaDonHang.Text = "Sửa đơn hàng";
             this.btn_SuaDonHang.UseVisualStyleBackColor = true;
             this.btn_SuaDonHang.Click += new System.EventHandler(this.btn_SuaDonHang_Click);
             // 
@@ -213,9 +215,12 @@
             // 
             // cbo_LuaChonSanPham
             // 
+            this.cbo_LuaChonSanPham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_LuaChonSanPham.FormattingEnabled = true;
+            this.cbo_LuaChonSanPham.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cbo_LuaChonSanPham.Location = new System.Drawing.Point(927, 46);
             this.cbo_LuaChonSanPham.Name = "cbo_LuaChonSanPham";
+            this.cbo_LuaChonSanPham.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cbo_LuaChonSanPham.Size = new System.Drawing.Size(228, 30);
             this.cbo_LuaChonSanPham.TabIndex = 3;
             this.cbo_LuaChonSanPham.SelectedIndexChanged += new System.EventHandler(this.cbo_LuaChonSanPham_SelectedIndexChanged);
@@ -387,6 +392,7 @@
             // 
             // cbo_TenDoiTac
             // 
+            this.cbo_TenDoiTac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_TenDoiTac.FormattingEnabled = true;
             this.cbo_TenDoiTac.Location = new System.Drawing.Point(309, 59);
             this.cbo_TenDoiTac.Name = "cbo_TenDoiTac";
@@ -624,6 +630,18 @@
             this.dgv_GiaoDich.TabIndex = 0;
             this.dgv_GiaoDich.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoDich_CellClick);
             // 
+            // btn_Huy
+            // 
+            this.btn_Huy.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_Huy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Huy.Location = new System.Drawing.Point(42, 46);
+            this.btn_Huy.Name = "btn_Huy";
+            this.btn_Huy.Size = new System.Drawing.Size(173, 42);
+            this.btn_Huy.TabIndex = 2;
+            this.btn_Huy.Text = "Huỷ";
+            this.btn_Huy.UseVisualStyleBackColor = false;
+            this.btn_Huy.Click += new System.EventHandler(this.btn_Huy_Click);
+            // 
             // frm_DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -708,5 +726,6 @@
         private System.Windows.Forms.DataGridView dgv_ThongTinSanPhamGiaoDich;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.DataGridView dgv_GiaoDich;
+        private System.Windows.Forms.Button btn_Huy;
     }
 }
