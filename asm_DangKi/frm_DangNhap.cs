@@ -13,12 +13,16 @@ namespace asm_DangKi
 {
     public partial class frm_DangNhap : Form
     {
-        public static string HoVaTen; //Biến toàn cục lưu họ và tên người đăng nhập
+        public static string TenDangNhap;
+        public static string MatKhau;
+        public static string SoDienThoai;
+        public static string HoVaTen;
+        public static string Email; //Biến toàn cục lưu họ và tên người đăng nhập
         public frm_DangNhap()
         {
             InitializeComponent();
         }
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
         private void frm_DangNhap_Load(object sender, EventArgs e)
         {
@@ -70,9 +74,17 @@ namespace asm_DangKi
                         // chuyển qua form trang chủ khi đăng nhập thành công
                         frm_TrangChu formTrangChu = new frm_TrangChu();
                         // Lấy tên người dùng từ cột "HoVaTen" trong bảng TAIKHOAN
+                        string tenDangNhap = reader["TenDangNhap"].ToString();
+                        string matKhau = reader["MatKhau"].ToString();
+                        string soDienThoai = reader["SoDienThoai"].ToString();
                         string hoVaTen = reader["HoVaTen"].ToString();
+                        string email = reader["Email"].ToString();
                         // gán giá trị cho biến toàn cục
+                        TenDangNhap = tenDangNhap;
+                        MatKhau = matKhau;
+                        SoDienThoai = soDienThoai;
                         HoVaTen = hoVaTen;
+                        Email = email;
                         formTrangChu.Show();
                         this.Hide();
                     }

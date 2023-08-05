@@ -18,7 +18,7 @@ namespace asm_DangKi
 {
     public partial class frm_DonHang : Form
     {
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True";
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True";
         SqlConnection conn = null;
         int viTri = -1;
         public frm_DonHang()

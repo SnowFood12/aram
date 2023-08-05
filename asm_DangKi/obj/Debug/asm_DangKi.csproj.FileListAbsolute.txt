@@ -101,3 +101,10 @@ C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SoDienThoai.resources
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_SuaMatKhau.resources
 C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\obj\Debug\asm_DangKi.frm_TenDangNhap.resources
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\NPOI.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\NPOI.OOXML.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\NPOI.ScratchPad.HWPF.dll
+C:\Users\ADMIN\Desktop\LapTrinhC#3\SnowFood_Aram\asm_DangKi\bin\Debug\ICSharpCode.SharpZipLib.xml

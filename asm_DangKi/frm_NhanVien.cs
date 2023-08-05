@@ -19,7 +19,7 @@ namespace asm_DangKi
             InitializeComponent();
         }
 
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
 
         public void LoadData()
@@ -35,11 +35,11 @@ namespace asm_DangKi
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    lbl_taiKhoan.Text = reader["TenDangNhap"].ToString();
-                    lbl_soDienThoai.Text = reader["SoDienThoai"].ToString();
-                    lbl_hoVaTen.Text = reader["HoVaTen"].ToString();
-                    lbl_Email.Text = reader["Email"].ToString();
-                    txt_MatKhau.Text = reader["MatKhau"].ToString();
+                    lbl_taiKhoan.Text = frm_DangNhap.TenDangNhap;
+                    lbl_soDienThoai.Text = frm_DangNhap.SoDienThoai;
+                    lbl_hoVaTen.Text = frm_DangNhap.HoVaTen;
+                    lbl_Email.Text = frm_DangNhap.Email;
+                    txt_MatKhau.Text = frm_DangNhap.MatKhau;
                 }
 
                 reader.Close();

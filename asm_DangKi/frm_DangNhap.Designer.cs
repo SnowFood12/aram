@@ -182,7 +182,7 @@
             this.lab_Thoat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lab_Thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Thoat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lab_Thoat.Location = new System.Drawing.Point(891, 23);
+            this.lab_Thoat.Location = new System.Drawing.Point(920, 9);
             this.lab_Thoat.Name = "lab_Thoat";
             this.lab_Thoat.Size = new System.Drawing.Size(35, 33);
             this.lab_Thoat.TabIndex = 14;

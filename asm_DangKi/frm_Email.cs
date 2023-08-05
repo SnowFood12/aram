@@ -26,7 +26,7 @@ namespace asm_DangKi
             this.parentForm = parentForm; // Gán form cha (frm_TrangChu) cho thuộc tính parentForm
         }
 
-        string str = "Data Source=LAPTOP-JAKJA372\\TAIMAIKHONGDUOC;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null;
 
         public void LoadForm()

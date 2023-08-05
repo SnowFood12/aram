@@ -17,7 +17,7 @@ namespace asm_DangKi
         {
             InitializeComponent();
         }
-        string str = "Data Source=LAPTOP-JAKJA372\\TAIMAIKHONGDUOC;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
 
         private void chk_HienThiMK_CheckedChanged(object sender, EventArgs e)

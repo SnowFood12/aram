@@ -74,6 +74,10 @@
             this.lbl_HienTen = new System.Windows.Forms.Label();
             this.grp_ThoiGian = new System.Windows.Forms.GroupBox();
             this.lbl_ThoiGianKiem = new System.Windows.Forms.Label();
+            this.btn_TatCa = new System.Windows.Forms.Button();
+            this.lbl_KetLuan = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbl_KL = new System.Windows.Forms.Label();
             this.tab_KiemKho.SuspendLayout();
             this.tab_TonKho.SuspendLayout();
             this.grp_ThaoTac.SuspendLayout();
@@ -88,6 +92,7 @@
             this.grp_ThucHien.SuspendLayout();
             this.grp_NguoiKiemKho.SuspendLayout();
             this.grp_ThoiGian.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_KiemKho
@@ -105,11 +110,8 @@
             // tab_TonKho
             // 
             this.tab_TonKho.BackColor = System.Drawing.Color.White;
+            this.tab_TonKho.Controls.Add(this.groupBox1);
             this.tab_TonKho.Controls.Add(this.grp_ThaoTac);
-            this.tab_TonKho.Controls.Add(this.lbl_TongChiPhi);
-            this.tab_TonKho.Controls.Add(this.lbl_TongSL);
-            this.tab_TonKho.Controls.Add(this.lbl_TongSLLech);
-            this.tab_TonKho.Controls.Add(this.lbl_TongChiPhiLech);
             this.tab_TonKho.Controls.Add(this.grp_XuLi);
             this.tab_TonKho.Controls.Add(this.grp_ChonSP);
             this.tab_TonKho.Controls.Add(this.grp_ThoiGianTab1);
@@ -131,9 +133,9 @@
             this.grp_ThaoTac.Controls.Add(this.btn_CanBangKho);
             this.grp_ThaoTac.Controls.Add(this.btn_XuatFile);
             this.grp_ThaoTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_ThaoTac.Location = new System.Drawing.Point(1073, 17);
+            this.grp_ThaoTac.Location = new System.Drawing.Point(1072, 17);
             this.grp_ThaoTac.Name = "grp_ThaoTac";
-            this.grp_ThaoTac.Size = new System.Drawing.Size(260, 202);
+            this.grp_ThaoTac.Size = new System.Drawing.Size(260, 210);
             this.grp_ThaoTac.TabIndex = 23;
             this.grp_ThaoTac.TabStop = false;
             this.grp_ThaoTac.Text = "Thao tác";
@@ -161,7 +163,7 @@
             // btn_CanBangKho
             // 
             this.btn_CanBangKho.ForeColor = System.Drawing.Color.Black;
-            this.btn_CanBangKho.Location = new System.Drawing.Point(35, 86);
+            this.btn_CanBangKho.Location = new System.Drawing.Point(35, 89);
             this.btn_CanBangKho.Name = "btn_CanBangKho";
             this.btn_CanBangKho.Size = new System.Drawing.Size(196, 50);
             this.btn_CanBangKho.TabIndex = 19;
@@ -172,7 +174,7 @@
             // btn_XuatFile
             // 
             this.btn_XuatFile.ForeColor = System.Drawing.Color.Black;
-            this.btn_XuatFile.Location = new System.Drawing.Point(35, 143);
+            this.btn_XuatFile.Location = new System.Drawing.Point(35, 149);
             this.btn_XuatFile.Name = "btn_XuatFile";
             this.btn_XuatFile.Size = new System.Drawing.Size(196, 50);
             this.btn_XuatFile.TabIndex = 20;
@@ -184,7 +186,7 @@
             // 
             this.lbl_TongChiPhi.AutoSize = true;
             this.lbl_TongChiPhi.ForeColor = System.Drawing.Color.Black;
-            this.lbl_TongChiPhi.Location = new System.Drawing.Point(487, 171);
+            this.lbl_TongChiPhi.Location = new System.Drawing.Point(16, 64);
             this.lbl_TongChiPhi.Name = "lbl_TongChiPhi";
             this.lbl_TongChiPhi.Size = new System.Drawing.Size(225, 25);
             this.lbl_TongChiPhi.TabIndex = 22;
@@ -194,7 +196,7 @@
             // 
             this.lbl_TongSL.AutoSize = true;
             this.lbl_TongSL.ForeColor = System.Drawing.Color.Black;
-            this.lbl_TongSL.Location = new System.Drawing.Point(487, 119);
+            this.lbl_TongSL.Location = new System.Drawing.Point(16, 34);
             this.lbl_TongSL.Name = "lbl_TongSL";
             this.lbl_TongSL.Size = new System.Drawing.Size(184, 25);
             this.lbl_TongSL.TabIndex = 21;
@@ -204,7 +206,7 @@
             // 
             this.lbl_TongSLLech.AutoSize = true;
             this.lbl_TongSLLech.ForeColor = System.Drawing.Color.Black;
-            this.lbl_TongSLLech.Location = new System.Drawing.Point(807, 119);
+            this.lbl_TongSLLech.Location = new System.Drawing.Point(329, 34);
             this.lbl_TongSLLech.Name = "lbl_TongSLLech";
             this.lbl_TongSLLech.Size = new System.Drawing.Size(23, 25);
             this.lbl_TongSLLech.TabIndex = 0;
@@ -214,7 +216,7 @@
             // 
             this.lbl_TongChiPhiLech.AutoSize = true;
             this.lbl_TongChiPhiLech.ForeColor = System.Drawing.Color.Black;
-            this.lbl_TongChiPhiLech.Location = new System.Drawing.Point(807, 171);
+            this.lbl_TongChiPhiLech.Location = new System.Drawing.Point(329, 64);
             this.lbl_TongChiPhiLech.Name = "lbl_TongChiPhiLech";
             this.lbl_TongChiPhiLech.Size = new System.Drawing.Size(70, 25);
             this.lbl_TongChiPhiLech.TabIndex = 1;
@@ -257,7 +259,7 @@
             this.dgv_XuLySanPham.RowTemplate.Height = 24;
             this.dgv_XuLySanPham.Size = new System.Drawing.Size(1317, 524);
             this.dgv_XuLySanPham.TabIndex = 0;
-            this.dgv_XuLySanPham.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_XuLySanPham_CellValueChanged);
+            this.dgv_XuLySanPham.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_XuLySanPham_CellEndEdit);
             // 
             // MaSp
             // 
@@ -338,11 +340,12 @@
             // grp_ChonSP
             // 
             this.grp_ChonSP.BackColor = System.Drawing.Color.White;
+            this.grp_ChonSP.Controls.Add(this.btn_TatCa);
             this.grp_ChonSP.Controls.Add(this.cbo_SanPham);
             this.grp_ChonSP.ForeColor = System.Drawing.Color.Black;
-            this.grp_ChonSP.Location = new System.Drawing.Point(102, 119);
+            this.grp_ChonSP.Location = new System.Drawing.Point(102, 131);
             this.grp_ChonSP.Name = "grp_ChonSP";
-            this.grp_ChonSP.Size = new System.Drawing.Size(355, 81);
+            this.grp_ChonSP.Size = new System.Drawing.Size(383, 85);
             this.grp_ChonSP.TabIndex = 16;
             this.grp_ChonSP.TabStop = false;
             this.grp_ChonSP.Text = "Chọn sản phẩm";
@@ -350,10 +353,11 @@
             // cbo_SanPham
             // 
             this.cbo_SanPham.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbo_SanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_SanPham.FormattingEnabled = true;
             this.cbo_SanPham.Location = new System.Drawing.Point(6, 35);
             this.cbo_SanPham.Name = "cbo_SanPham";
-            this.cbo_SanPham.Size = new System.Drawing.Size(343, 33);
+            this.cbo_SanPham.Size = new System.Drawing.Size(251, 37);
             this.cbo_SanPham.TabIndex = 0;
             this.cbo_SanPham.SelectedIndexChanged += new System.EventHandler(this.cbo_SanPham_SelectedIndexChanged);
             // 
@@ -611,6 +615,50 @@
             this.lbl_ThoiGianKiem.Size = new System.Drawing.Size(0, 25);
             this.lbl_ThoiGianKiem.TabIndex = 8;
             // 
+            // btn_TatCa
+            // 
+            this.btn_TatCa.Location = new System.Drawing.Point(263, 29);
+            this.btn_TatCa.Name = "btn_TatCa";
+            this.btn_TatCa.Size = new System.Drawing.Size(114, 50);
+            this.btn_TatCa.TabIndex = 23;
+            this.btn_TatCa.Text = "Tất cả";
+            this.btn_TatCa.UseVisualStyleBackColor = true;
+            this.btn_TatCa.Click += new System.EventHandler(this.btn_TatCa_Click);
+            // 
+            // lbl_KetLuan
+            // 
+            this.lbl_KetLuan.AutoSize = true;
+            this.lbl_KetLuan.ForeColor = System.Drawing.Color.Black;
+            this.lbl_KetLuan.Location = new System.Drawing.Point(16, 94);
+            this.lbl_KetLuan.Name = "lbl_KetLuan";
+            this.lbl_KetLuan.Size = new System.Drawing.Size(173, 25);
+            this.lbl_KetLuan.TabIndex = 24;
+            this.lbl_KetLuan.Text = "Kết luận sau kiểm:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbl_KL);
+            this.groupBox1.Controls.Add(this.lbl_TongChiPhiLech);
+            this.groupBox1.Controls.Add(this.lbl_TongSLLech);
+            this.groupBox1.Controls.Add(this.lbl_KetLuan);
+            this.groupBox1.Controls.Add(this.lbl_TongSL);
+            this.groupBox1.Controls.Add(this.lbl_TongChiPhi);
+            this.groupBox1.Location = new System.Drawing.Point(497, 97);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(563, 130);
+            this.groupBox1.TabIndex = 24;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Thông tin kiểm tra hàng tồn";
+            // 
+            // lbl_KL
+            // 
+            this.lbl_KL.AutoSize = true;
+            this.lbl_KL.ForeColor = System.Drawing.Color.Black;
+            this.lbl_KL.Location = new System.Drawing.Point(237, 94);
+            this.lbl_KL.Name = "lbl_KL";
+            this.lbl_KL.Size = new System.Drawing.Size(0, 25);
+            this.lbl_KL.TabIndex = 25;
+            // 
             // frm_KiemKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -622,7 +670,6 @@
             this.Text = "frm_KiemKho";
             this.tab_KiemKho.ResumeLayout(false);
             this.tab_TonKho.ResumeLayout(false);
-            this.tab_TonKho.PerformLayout();
             this.grp_ThaoTac.ResumeLayout(false);
             this.grp_XuLi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_XuLySanPham)).EndInit();
@@ -640,6 +687,8 @@
             this.grp_NguoiKiemKho.PerformLayout();
             this.grp_ThoiGian.ResumeLayout(false);
             this.grp_ThoiGian.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -692,5 +741,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn XuHuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private FontAwesome.Sharp.IconButton ibtn_XuatFileHSD;
+        private System.Windows.Forms.Button btn_TatCa;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbl_KetLuan;
+        private System.Windows.Forms.Label lbl_KL;
     }
 }

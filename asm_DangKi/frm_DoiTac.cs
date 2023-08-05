@@ -23,7 +23,7 @@ namespace asm_DangKi
             load_dvg_DanhSach();
         }
         SqlConnection conn = null;
-        string str = "Data Source=LPL\\LONGPOLY;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết  
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết  
         SqlDataAdapter std = null;
         int ViTri = -1;
         public void ketnoi()
@@ -130,7 +130,7 @@ namespace asm_DangKi
             }
             catch (Exception)
             {
-                trong();
+               
                 MessageBox.Show("Không có dữ liệu được thêm vào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             conn.Close();
@@ -249,7 +249,7 @@ namespace asm_DangKi
                     string query = "SELECT * FROM DoiTac WHERE MaDoiTac LIKE @tim ";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@tim", tim + "%");
+                        cmd.Parameters.AddWithValue("@tim", "%"+tim + "%");
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -262,7 +262,7 @@ namespace asm_DangKi
                     string query = "SELECT * FROM DoiTac WHERE TenDoiTac LIKE @tim";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@tim", tim + "%");
+                        cmd.Parameters.AddWithValue("@tim", "%" + tim + "%");
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -275,7 +275,7 @@ namespace asm_DangKi
                     string query = "SELECT * FROM DoiTac WHERE SoDT LIKE @tim";
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@tim", tim + "%");
+                        cmd.Parameters.AddWithValue("@tim", "%" + tim + "%");
                         SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
@@ -292,14 +292,16 @@ namespace asm_DangKi
         }
         private void rdo_ma_CheckedChanged(object sender, EventArgs e)
         {
-
+            txt_timDT.Enabled = true;
         }
         private void rdo_ten_CheckedChanged(object sender, EventArgs e)
         {
+            txt_timDT.Enabled = true;
 
         }
         private void rdo_sdt_CheckedChanged(object sender, EventArgs e)
         {
+            txt_timDT.Enabled = true;
         }
     }
 
