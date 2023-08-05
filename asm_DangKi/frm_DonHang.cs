@@ -432,9 +432,17 @@ namespace asm_DangKi
                     TongTienSauKhiXoaSanPhamTrongDonHang();
 
                     btn_SuaDonHang.Enabled = false;
-                    btn_ThanhToan.Enabled = true;
                     btn_ThemVaoDonHang.Enabled = true;
                     btn_XoaDonHang.Enabled = false;
+                    int tongTien = int.Parse(txt_TongTienHoaDon.Text); 
+                    if ( tongTien == 0 )
+                    {
+                        btn_ThanhToan.Enabled = false;
+                    }
+                    else
+                    {
+                        btn_ThanhToan.Enabled = true;
+                    }
                 }
             }
             catch (Exception ex)
@@ -649,7 +657,7 @@ namespace asm_DangKi
             }
 
         } 
-                                                        
+        //---------------------------------------------------                                          
         public void CapNhatSoLuong(int soLuongConLai)
         {
             using (conn = new SqlConnection(str))
@@ -716,7 +724,7 @@ namespace asm_DangKi
             LoadDatagridviewHoaDon();
 
         }
-
+        //------------------------------------------------------
         public void CapNhatGiaTien( int tongTienHoaDonMoi)
         {
             using (conn = new SqlConnection(str))
@@ -852,6 +860,17 @@ namespace asm_DangKi
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dgv_ThongTinSanPhamGiaoDich.DataSource = dt;
+                    }
+
+                    using ( conn = new SqlConnection(str))
+                    {
+                        dgv_ThongTinDoiTac.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        string query = $"SELECT DoiTac.TenDoiTac , DoiTac.DiaChi , DoiTac.SoDT , DoiTac.Email FROM HoaDon INNER JOIN DoiTac ON HoaDon.MaDoiTac = DoiTac.MaDoiTac where MaHoaDon = '{sql}'"; 
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd); 
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        dgv_ThongTinDoiTac.DataSource = dt; 
                     }
                 }
 
@@ -1031,6 +1050,43 @@ namespace asm_DangKi
             btn_ThanhToan.Enabled = false;
             btn_ThemVaoDonHang.Enabled = false;
             btn_XoaDonHang.Enabled = false;
+        }
+
+        //=========================================
+
+        // hiển thị khi click vào datagridview
+        private void dgv_DonHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    using (conn = new SqlConnection(str))
+                    {
+                        string query = $"select * from HoaDon where MaHoaDon = '{txt_MaHoaDon.Text}'";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        DataSet dataSet = new DataSet();
+                        SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(adapter);
+
+                        adapter.Fill(dataSet, "HoaDon");
+                        DataRow dataRow = dataSet.Tables["HoaDon"].Rows[e.RowIndex];
+                        cbo_NhanVien.SelectedValue = dataRow["NVTaoDon"].ToString();
+                        cbo_TenDoiTac.SelectedValue = dataRow["MaDoiTac"].ToString();
+                        dtm_NgayTaoHoaDon.Text = dataRow["NgayTaoHoaDon"].ToString(); 
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         //=========================================
