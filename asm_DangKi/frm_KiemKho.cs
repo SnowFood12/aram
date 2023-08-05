@@ -85,6 +85,15 @@ namespace asm_DangKi
                 {
                     // Hiển thị danh sách sản phẩm hết hạn lên DataGridView
                     dgv_DanhSachSanPham.DataSource = table;
+                    // Xóa các sản phẩm ra khỏi bảng HoaDon_dsSanPham
+                    string xoaSPHD = "DELETE FROM HoaDon_dsSanPham WHERE MaSanPham IN(SELECT MaSanPham FROM SanPham WHERE HanSuDung < GETDATE())";
+                    using (conn = new SqlConnection(strconn))
+                    {
+                        SqlCommand cmd = new SqlCommand(xoaSPHD, conn);
+                        conn.Open();
+                        int spHoaDon = cmd.ExecuteNonQuery();
+                        conn.Close();
+                    }
                     // Xóa các sản phẩm hết hạn khỏi CSDL
                     string xoaSPHetHSD = "DELETE FROM SanPham WHERE HanSuDung < GETDATE()";
                     using (conn = new SqlConnection(strconn))
@@ -191,20 +200,31 @@ namespace asm_DangKi
                 {
                     int soLuongLech = Convert.ToInt32(row.Cells["SLLech"].Value);
                     int giaTriLech = Convert.ToInt32(row.Cells["GiaTriLech"].Value);
-                    if (soLuongLech > 0)
+                    switch (soLuongLech)
                     {
-                        row.Cells["XuHuong"].Value = "Lệch tăng";
+                        case var lechTang when lechTang > 0:
+                            row.Cells["XuHuong"].Value = "Lệch tăng";
+                            break;
+                        case var lechGiam when lechGiam < 0:
+                            row.Cells["XuHuong"].Value = "Lệch giảm";
+                            break;
+                        default:
+                            row.Cells["XuHuong"].Value = "";
+                            break;
                     }
-                    else
-                    {
-                        row.Cells["XuHuong"].Value = "Lệch giảm";
-                    }
-
                     tongSoLuongLech += soLuongLech;
                     tongChiPhiLech += giaTriLech;
                 }
                 lbl_TongSLLech.Text = tongSoLuongLech.ToString();
                 lbl_TongChiPhiLech.Text = tongChiPhiLech.ToString() + " VNĐ";
+                if (tongChiPhiLech > 0)
+                {
+                    lbl_KL.Text = "Kho thực phẩm thừa hàng";
+                }
+                else
+                {
+                    lbl_KL.Text = "Kho thực phẩm thiếu hàng";
+                }
             }
         }
 
@@ -234,34 +254,64 @@ namespace asm_DangKi
             btn_Xoa.Enabled = true;
             btn_Huy.Enabled = true;
         }
-
-        private void dgv_XuLySanPham_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void btn_TatCa_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            // Truy vấn cơ sở dữ liệu để lấy thông tin chi tiết về sản phẩm đó
+            using (conn = new SqlConnection(strconn))
             {
-                // Tính toán giá trị của từng dòng
-                int soLuongTonKho = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLTonKho"].Value);
-                int soLuongThucTe = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLThucTe"].Value);
-                if (soLuongThucTe <= 0)
+                conn.Open();
+                string query = "SELECT * FROM SanPham";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                // Thêm thông tin về sản phẩm này vào DataGridView
+                while (reader.Read())
                 {
-                    MessageBox.Show("Số lượng thực tế phải lớn hơn 0");
-                    dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLThucTe"].Value = null;
-                    return;
+                    string maSanPham = reader["MaSanPham"].ToString();
+                    string tenSanPham = reader["TenSanPham"].ToString();
+                    int giaSanPham = Convert.ToInt32(reader["GiaBan"]);
+                    int soLuong = Convert.ToInt32(reader["SoLuong"]);
+                    dgv_XuLySanPham.Rows.Add(maSanPham, tenSanPham, giaSanPham, soLuong);
                 }
-                int soLuongLech = soLuongThucTe - soLuongTonKho;
-                int giaBan = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["GBan"].Value);
-                int giaTri = soLuongLech * giaBan;
 
-                // Cập nhật giá trị của cột "Giá trị"
-                dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLLech"].Value = soLuongLech;
-                dgv_XuLySanPham.Rows[e.RowIndex].Cells["GiaTriLech"].Value = giaTri;
+                reader.Close();
             }
-            CapNhatTongSLLechVaTongChiPhiLech();
-
-            
-            btn_CanBangKho.Enabled = true;
+            btn_Xoa.Enabled = true;
+            btn_Huy.Enabled = true;
+            btn_TatCa.Enabled = false;
         }
+        private void dgv_XuLySanPham_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    // Tính toán giá trị của từng dòng
+                    int soLuongTonKho = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLTonKho"].Value);
+                    int soLuongThucTe = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLThucTe"].Value);
+                    if (soLuongThucTe <= 0)
+                    {
+                        MessageBox.Show("Số lượng thực tế phải lớn hơn 0");
+                        dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLThucTe"].Value = null;
+                        return;
+                    }
+                    int soLuongLech = soLuongThucTe - soLuongTonKho;
+                    int giaBan = Convert.ToInt32(dgv_XuLySanPham.Rows[e.RowIndex].Cells["GBan"].Value);
+                    int giaTri = soLuongLech * giaBan;
 
+                    // Cập nhật giá trị của cột "Giá trị"
+                    dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLLech"].Value = soLuongLech;
+                    dgv_XuLySanPham.Rows[e.RowIndex].Cells["GiaTriLech"].Value = giaTri;
+                }
+                CapNhatTongSLLechVaTongChiPhiLech();
+                btn_CanBangKho.Enabled = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Số lượng thực tế phải là số");
+                dgv_XuLySanPham.Rows[e.RowIndex].Cells["SLThucTe"].Value = null;
+            }
+        }
         private void btn_CanBangKho_Click(object sender, EventArgs e)
         {
             try
@@ -269,12 +319,16 @@ namespace asm_DangKi
                 using (conn = new SqlConnection(strconn))
                 {
                     conn.Open();
-
-                    string updateKho = "UPDATE SanPham SET SoLuong = @SoLuongThucTe WHERE MaSanPham= @MaSanPham";
-                    SqlCommand cmd = new SqlCommand(updateKho, conn);
-
                     foreach (DataGridViewRow row in dgv_XuLySanPham.Rows)
                     {
+                        string updateKho = "UPDATE SanPham SET SoLuong = @SoLuongThucTe WHERE MaSanPham= @MaSanPham";
+                        SqlCommand cmd = new SqlCommand(updateKho, conn);
+                        // Kiểm tra nếu cột "SLThucTe" không được điền
+                        if (row.Cells["SLThucTe"].Value == null || string.IsNullOrEmpty(row.Cells["SLThucTe"].Value.ToString()))
+                        {
+                            MessageBox.Show("Không được để trống cột 'Số lượng thực tế'!!!");
+                            return;
+                        }
                         if (!row.IsNewRow)
                         {
                             cmd.Parameters.Clear();
@@ -283,8 +337,8 @@ namespace asm_DangKi
                             //Hiện trạng thái "Đã cân bằng kho" cho cột Trạng thái
                             row.Cells["TrangThai"].Value = "Đã cân bằng kho";
                         }
+                        cmd.ExecuteNonQuery();
                     }
-                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Đã cân bằng số lượng tồn thành công");
                 }
             }
@@ -322,10 +376,12 @@ namespace asm_DangKi
                 }
                 lbl_TongSLLech.Text = "0";
                 lbl_TongChiPhiLech.Text = "0 VNĐ";
+                lbl_KL.Text = "";
             }
             btn_Xoa.Enabled = false;
             btn_CanBangKho.Enabled = false;
             btn_Huy.Enabled = false;
+            btn_TatCa.Enabled = true;
             btn_XuatFile.Enabled = false;
         }
 
@@ -346,7 +402,8 @@ namespace asm_DangKi
                 worksheet.Cells[2, 1] = "Thời gian kiểm kho: " + DateTime.Now.ToString();
                 worksheet.Cells[4, 2] = "DANH SÁCH KIỂM TRA HÀNG TỒN TRONG KHO";
                 worksheet.Cells[1, 8] = "TỔNG SỐ LƯỢNG LỆCH: " + lbl_TongSLLech.Text;
-                worksheet.Cells[2, 8] = "TỔNG CHI PHÍ CHÊNH LỆCH: " + lbl_TongChiPhiLech.Text; 
+                worksheet.Cells[2, 8] = "TỔNG CHI PHÍ CHÊNH LỆCH: " + lbl_TongChiPhiLech.Text;
+                worksheet.Cells[3, 8] = "KẾT LUẬN SAU KIỂM: " + lbl_KL.Text;
 
                 // Thêm tiêu đề cho các cột
                 worksheet.Cells[6, 2] = "Mã sản phẩm";
@@ -363,6 +420,12 @@ namespace asm_DangKi
                 int row = 7;
                 foreach (DataGridViewRow dr in dgv_XuLySanPham.Rows)
                 {
+                    // Kiểm tra nếu cột "SLThucTe" không được điền
+                    if (dr.Cells["SLThucTe"].Value == null || string.IsNullOrEmpty(dr.Cells["SLThucTe"].Value.ToString()))
+                    {
+                        MessageBox.Show("Không được để trống cột 'Số lượng thực tế'!!!");
+                        return;
+                    }
                     worksheet.Cells[row, 2] = dr.Cells["MaSp"].Value.ToString();
                     worksheet.Cells[row, 3] = dr.Cells["TenSP"].Value.ToString();
                     worksheet.Cells[row, 4] = dr.Cells["GBan"].Value.ToString();
@@ -388,5 +451,9 @@ namespace asm_DangKi
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message);
             }
         }
+
+
+
+
     }
 }

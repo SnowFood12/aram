@@ -673,7 +673,6 @@
             this.dgv_ThongTinDoiTac.Size = new System.Drawing.Size(617, 129);
             this.dgv_ThongTinDoiTac.TabIndex = 0;
             this.dgv_ThongTinDoiTac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoDich_CellClick);
-            this.dgv_ThongTinDoiTac.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // frm_DonHang
             // 
