@@ -48,28 +48,28 @@
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.grp_DsDoiTac = new System.Windows.Forms.GroupBox();
+            this.dgv_DSDTAC = new System.Windows.Forms.DataGridView();
+            this.grp_DoiTac = new System.Windows.Forms.GroupBox();
+            this.lbl_DoiTac = new System.Windows.Forms.Label();
+            this.txt_timDT = new System.Windows.Forms.TextBox();
             this.grp_TimTheo = new System.Windows.Forms.GroupBox();
             this.rdo_sdt = new System.Windows.Forms.RadioButton();
             this.rdo_ten = new System.Windows.Forms.RadioButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.rdo_ma = new System.Windows.Forms.RadioButton();
-            this.dgv_DSDTAC = new System.Windows.Forms.DataGridView();
             this.lbl_TieuDe = new System.Windows.Forms.Label();
-            this.lbl_DoiTac = new System.Windows.Forms.Label();
-            this.txt_timDT = new System.Windows.Forms.TextBox();
-            this.grp_DoiTac = new System.Windows.Forms.GroupBox();
-            this.grp_DsDoiTac = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grp_DsThongTinDoiTac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.grp_TimTheo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.grp_DsDoiTac.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSDTAC)).BeginInit();
             this.grp_DoiTac.SuspendLayout();
-            this.grp_DsDoiTac.SuspendLayout();
+            this.grp_TimTheo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -301,6 +301,69 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tìm kiếm thông tin đối tác";
             // 
+            // grp_DsDoiTac
+            // 
+            this.grp_DsDoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grp_DsDoiTac.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.grp_DsDoiTac.Controls.Add(this.dgv_DSDTAC);
+            this.grp_DsDoiTac.Location = new System.Drawing.Point(61, 305);
+            this.grp_DsDoiTac.Name = "grp_DsDoiTac";
+            this.grp_DsDoiTac.Size = new System.Drawing.Size(1295, 501);
+            this.grp_DsDoiTac.TabIndex = 13;
+            this.grp_DsDoiTac.TabStop = false;
+            this.grp_DsDoiTac.Text = "Danh sách Đối tác";
+            // 
+            // dgv_DSDTAC
+            // 
+            this.dgv_DSDTAC.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dgv_DSDTAC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_DSDTAC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgv_DSDTAC.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_DSDTAC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DSDTAC.Location = new System.Drawing.Point(6, 52);
+            this.dgv_DSDTAC.Name = "dgv_DSDTAC";
+            this.dgv_DSDTAC.RowHeadersWidth = 62;
+            this.dgv_DSDTAC.RowTemplate.Height = 28;
+            this.dgv_DSDTAC.Size = new System.Drawing.Size(1284, 444);
+            this.dgv_DSDTAC.TabIndex = 10;
+            // 
+            // grp_DoiTac
+            // 
+            this.grp_DoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grp_DoiTac.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.grp_DoiTac.Controls.Add(this.lbl_DoiTac);
+            this.grp_DoiTac.Controls.Add(this.txt_timDT);
+            this.grp_DoiTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grp_DoiTac.Location = new System.Drawing.Point(61, 72);
+            this.grp_DoiTac.Name = "grp_DoiTac";
+            this.grp_DoiTac.Size = new System.Drawing.Size(606, 198);
+            this.grp_DoiTac.TabIndex = 12;
+            this.grp_DoiTac.TabStop = false;
+            this.grp_DoiTac.Text = "Đối tác cần tìm";
+            // 
+            // lbl_DoiTac
+            // 
+            this.lbl_DoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_DoiTac.AutoSize = true;
+            this.lbl_DoiTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_DoiTac.Location = new System.Drawing.Point(225, 40);
+            this.lbl_DoiTac.Name = "lbl_DoiTac";
+            this.lbl_DoiTac.Size = new System.Drawing.Size(118, 32);
+            this.lbl_DoiTac.TabIndex = 1;
+            this.lbl_DoiTac.Text = "Đối tác:";
+            // 
+            // txt_timDT
+            // 
+            this.txt_timDT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txt_timDT.Enabled = false;
+            this.txt_timDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_timDT.Location = new System.Drawing.Point(106, 110);
+            this.txt_timDT.Multiline = true;
+            this.txt_timDT.Name = "txt_timDT";
+            this.txt_timDT.Size = new System.Drawing.Size(384, 50);
+            this.txt_timDT.TabIndex = 0;
+            this.txt_timDT.TextChanged += new System.EventHandler(this.txt_timDT_TextChanged);
+            // 
             // grp_TimTheo
             // 
             this.grp_TimTheo.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -367,20 +430,6 @@
             this.rdo_ma.UseVisualStyleBackColor = true;
             this.rdo_ma.CheckedChanged += new System.EventHandler(this.rdo_ma_CheckedChanged);
             // 
-            // dgv_DSDTAC
-            // 
-            this.dgv_DSDTAC.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dgv_DSDTAC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgv_DSDTAC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgv_DSDTAC.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_DSDTAC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DSDTAC.Location = new System.Drawing.Point(6, 52);
-            this.dgv_DSDTAC.Name = "dgv_DSDTAC";
-            this.dgv_DSDTAC.RowHeadersWidth = 62;
-            this.dgv_DSDTAC.RowTemplate.Height = 28;
-            this.dgv_DSDTAC.Size = new System.Drawing.Size(1284, 444);
-            this.dgv_DSDTAC.TabIndex = 10;
-            // 
             // lbl_TieuDe
             // 
             this.lbl_TieuDe.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -391,53 +440,6 @@
             this.lbl_TieuDe.Size = new System.Drawing.Size(290, 36);
             this.lbl_TieuDe.TabIndex = 5;
             this.lbl_TieuDe.Text = "TÌM KIẾM ĐỐI TÁC";
-            // 
-            // lbl_DoiTac
-            // 
-            this.lbl_DoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_DoiTac.AutoSize = true;
-            this.lbl_DoiTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DoiTac.Location = new System.Drawing.Point(225, 40);
-            this.lbl_DoiTac.Name = "lbl_DoiTac";
-            this.lbl_DoiTac.Size = new System.Drawing.Size(118, 32);
-            this.lbl_DoiTac.TabIndex = 1;
-            this.lbl_DoiTac.Text = "Đối tác:";
-            // 
-            // txt_timDT
-            // 
-            this.txt_timDT.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_timDT.Location = new System.Drawing.Point(106, 110);
-            this.txt_timDT.Multiline = true;
-            this.txt_timDT.Name = "txt_timDT";
-            this.txt_timDT.Size = new System.Drawing.Size(384, 50);
-            this.txt_timDT.TabIndex = 0;
-            this.txt_timDT.TextChanged += new System.EventHandler(this.txt_timDT_TextChanged);
-            // 
-            // grp_DoiTac
-            // 
-            this.grp_DoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grp_DoiTac.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.grp_DoiTac.Controls.Add(this.lbl_DoiTac);
-            this.grp_DoiTac.Controls.Add(this.txt_timDT);
-            this.grp_DoiTac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_DoiTac.Location = new System.Drawing.Point(61, 72);
-            this.grp_DoiTac.Name = "grp_DoiTac";
-            this.grp_DoiTac.Size = new System.Drawing.Size(606, 198);
-            this.grp_DoiTac.TabIndex = 12;
-            this.grp_DoiTac.TabStop = false;
-            this.grp_DoiTac.Text = "Đối tác cần tìm";
-            // 
-            // grp_DsDoiTac
-            // 
-            this.grp_DsDoiTac.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grp_DsDoiTac.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.grp_DsDoiTac.Controls.Add(this.dgv_DSDTAC);
-            this.grp_DsDoiTac.Location = new System.Drawing.Point(61, 305);
-            this.grp_DsDoiTac.Name = "grp_DsDoiTac";
-            this.grp_DsDoiTac.Size = new System.Drawing.Size(1295, 501);
-            this.grp_DsDoiTac.TabIndex = 13;
-            this.grp_DsDoiTac.TabStop = false;
-            this.grp_DsDoiTac.Text = "Danh sách Đối tác";
             // 
             // frm_DoiTac
             // 
@@ -459,13 +461,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.grp_TimTheo.ResumeLayout(false);
-            this.grp_TimTheo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.grp_DsDoiTac.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSDTAC)).EndInit();
             this.grp_DoiTac.ResumeLayout(false);
             this.grp_DoiTac.PerformLayout();
-            this.grp_DsDoiTac.ResumeLayout(false);
+            this.grp_TimTheo.ResumeLayout(false);
+            this.grp_TimTheo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
