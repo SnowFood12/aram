@@ -38,7 +38,7 @@
             // txt_matKhau
             // 
             this.txt_matKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_matKhau.Location = new System.Drawing.Point(274, 72);
+            this.txt_matKhau.Location = new System.Drawing.Point(288, 72);
             this.txt_matKhau.Name = "txt_matKhau";
             this.txt_matKhau.Size = new System.Drawing.Size(295, 38);
             this.txt_matKhau.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(78, 72);
+            this.label1.Location = new System.Drawing.Point(43, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 32);
             this.label1.TabIndex = 1;
@@ -57,7 +57,7 @@
             // btn_xacNhan
             // 
             this.btn_xacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_xacNhan.Location = new System.Drawing.Point(334, 198);
+            this.btn_xacNhan.Location = new System.Drawing.Point(364, 198);
             this.btn_xacNhan.Name = "btn_xacNhan";
             this.btn_xacNhan.Size = new System.Drawing.Size(156, 39);
             this.btn_xacNhan.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.chk_HienThiMK.AutoSize = true;
             this.chk_HienThiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_HienThiMK.Location = new System.Drawing.Point(84, 207);
+            this.chk_HienThiMK.Location = new System.Drawing.Point(49, 207);
             this.chk_HienThiMK.Name = "chk_HienThiMK";
             this.chk_HienThiMK.Size = new System.Drawing.Size(204, 30);
             this.chk_HienThiMK.TabIndex = 14;
@@ -84,7 +84,7 @@
             this.lab_QuenMK.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lab_QuenMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_QuenMK.ForeColor = System.Drawing.Color.Salmon;
-            this.lab_QuenMK.Location = new System.Drawing.Point(269, 129);
+            this.lab_QuenMK.Location = new System.Drawing.Point(283, 129);
             this.lab_QuenMK.Name = "lab_QuenMK";
             this.lab_QuenMK.Size = new System.Drawing.Size(173, 26);
             this.lab_QuenMK.TabIndex = 15;

@@ -76,10 +76,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.dgv_ThongTinSanPhamGiaoDich = new System.Windows.Forms.DataGridView();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.dgv_GiaoDich = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dgv_ThongTinDoiTac = new System.Windows.Forms.DataGridView();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.dgv_GiaoDich = new System.Windows.Forms.DataGridView();
             this.tabPage1.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -94,10 +94,10 @@
             this.groupBox10.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongTinSanPhamGiaoDich)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_GiaoDich)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongTinDoiTac)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_GiaoDich)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -582,9 +582,9 @@
             // btn_XuatFile
             // 
             this.btn_XuatFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_XuatFile.Location = new System.Drawing.Point(408, 81);
+            this.btn_XuatFile.Location = new System.Drawing.Point(419, 80);
             this.btn_XuatFile.Name = "btn_XuatFile";
-            this.btn_XuatFile.Size = new System.Drawing.Size(186, 36);
+            this.btn_XuatFile.Size = new System.Drawing.Size(186, 45);
             this.btn_XuatFile.TabIndex = 8;
             this.btn_XuatFile.Text = "Xuất file";
             this.btn_XuatFile.UseVisualStyleBackColor = true;
@@ -594,7 +594,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(163, 26);
+            this.label17.Location = new System.Drawing.Point(154, 39);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(150, 25);
             this.label17.TabIndex = 6;
@@ -624,31 +624,6 @@
             this.dgv_ThongTinSanPhamGiaoDich.Size = new System.Drawing.Size(1350, 248);
             this.dgv_ThongTinSanPhamGiaoDich.TabIndex = 0;
             // 
-            // groupBox8
-            // 
-            this.groupBox8.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.groupBox8.Controls.Add(this.dgv_GiaoDich);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(11, 215);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(1353, 254);
-            this.groupBox8.TabIndex = 9;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Thông tin giao dịch";
-            // 
-            // dgv_GiaoDich
-            // 
-            this.dgv_GiaoDich.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv_GiaoDich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_GiaoDich.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_GiaoDich.Location = new System.Drawing.Point(3, 26);
-            this.dgv_GiaoDich.Name = "dgv_GiaoDich";
-            this.dgv_GiaoDich.RowHeadersWidth = 51;
-            this.dgv_GiaoDich.RowTemplate.Height = 24;
-            this.dgv_GiaoDich.Size = new System.Drawing.Size(1347, 225);
-            this.dgv_GiaoDich.TabIndex = 0;
-            this.dgv_GiaoDich.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoDich_CellClick);
-            // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -673,6 +648,31 @@
             this.dgv_ThongTinDoiTac.Size = new System.Drawing.Size(617, 129);
             this.dgv_ThongTinDoiTac.TabIndex = 0;
             this.dgv_ThongTinDoiTac.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoDich_CellClick);
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.groupBox8.Controls.Add(this.dgv_GiaoDich);
+            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox8.Location = new System.Drawing.Point(11, 215);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(1353, 254);
+            this.groupBox8.TabIndex = 9;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Thông tin giao dịch";
+            // 
+            // dgv_GiaoDich
+            // 
+            this.dgv_GiaoDich.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgv_GiaoDich.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_GiaoDich.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_GiaoDich.Location = new System.Drawing.Point(3, 26);
+            this.dgv_GiaoDich.Name = "dgv_GiaoDich";
+            this.dgv_GiaoDich.RowHeadersWidth = 51;
+            this.dgv_GiaoDich.RowTemplate.Height = 24;
+            this.dgv_GiaoDich.Size = new System.Drawing.Size(1347, 225);
+            this.dgv_GiaoDich.TabIndex = 0;
+            this.dgv_GiaoDich.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_GiaoDich_CellClick);
             // 
             // frm_DonHang
             // 
@@ -701,10 +701,10 @@
             this.groupBox10.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongTinSanPhamGiaoDich)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_GiaoDich)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongTinDoiTac)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_GiaoDich)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -77,6 +77,7 @@ namespace asm_DangKi
                         HoVaTen = hoVaTen;
                         formTrangChu.Show();
                         this.Hide();
+                        frm_NhanVien.TenDangNhapDangNhap = txt_TenDangNhap.Text;
                     }
                     else // nếu khác nhau 
                     {

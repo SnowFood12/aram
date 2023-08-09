@@ -12,6 +12,8 @@ using System.IO;
 using System.Windows.Media.Media3D;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using NPOI.SS.Formula.Functions;
+using System.Reflection;
 
 namespace asm_DangKi
 
@@ -45,10 +47,11 @@ namespace asm_DangKi
 
             btn_Huy.Hide();
 
-            btn_SuaDonHang.Enabled = false; 
+            btn_SuaDonHang.Enabled = false;
             btn_ThanhToan.Enabled = false;
             btn_ThemVaoDonHang.Enabled = false;
             btn_XoaDonHang.Enabled = false;
+            txt_MaHoaDon.ReadOnly = true;
         }
 
         //=========================================
@@ -143,6 +146,13 @@ namespace asm_DangKi
                     DataTable dt = new DataTable();
                     _adapter.Fill(dt);
                     dgv_DonHang.DataSource = dt;
+
+                    // đổi tên các cột
+                    dgv_DonHang.Columns[0].HeaderText = "Mã Hoá Đơn"; 
+                    dgv_DonHang.Columns[1].HeaderText = "Đối Tác"; 
+                    dgv_DonHang.Columns[2].HeaderText = "Ngày Tạo"; 
+                    dgv_DonHang.Columns[3].HeaderText = "Tổng Tiền"; 
+                    dgv_DonHang.Columns[4].HeaderText = "Nhân Viên"; 
                 }
             }
             catch (Exception ex)
@@ -167,6 +177,14 @@ namespace asm_DangKi
                     DataTable dt = new DataTable();
                     _adapter.Fill(dt);
                     dgv_ThonTinDonHangSanPham.DataSource = dt;
+
+                    // đổi tên các cột
+
+                    dgv_ThonTinDonHangSanPham.Columns[0].HeaderText = "Số TT"; 
+                    dgv_ThonTinDonHangSanPham.Columns[1].HeaderText = "Mã Sản Phẩm"; 
+                    dgv_ThonTinDonHangSanPham.Columns[2].HeaderText = "Mã Hoá Đơn"; 
+                    dgv_ThonTinDonHangSanPham.Columns[3].HeaderText = "Số Lượng"; 
+                    dgv_ThonTinDonHangSanPham.Columns[4].HeaderText = "Tổng Tiền"; 
                 }
             }
             catch (Exception ex)
@@ -195,6 +213,7 @@ namespace asm_DangKi
                         txt_HangTonKho.Text = reader["SoLuong"].ToString();
                     }
                     txt_SoLuong.ReadOnly = false;
+                    txt_SoLuong.Clear();
                 }
             }
             catch (Exception ex)
@@ -238,19 +257,11 @@ namespace asm_DangKi
         {
             try
             {
-                if (txt_MaHoaDon.Text.Length < 3)
-                {
-                    MessageBox.Show("Mã hoá đơn không hợp lệ !!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    ThemHoaDon();
+                ThemHoaDon();
 
-                    txt_MaHoaDon.ReadOnly = true;
-                    btn_TaoHoaDon.Hide();
-                    btn_Huy.Show();
-                    btn_ThemVaoDonHang.Enabled = true;
-                }
+                btn_TaoHoaDon.Hide();
+                btn_Huy.Show();
+                btn_ThemVaoDonHang.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -261,7 +272,7 @@ namespace asm_DangKi
         //=========================================
 
         // tạo hoá đơn 
-        public void ThemHoaDon() 
+        public void ThemHoaDon()
         {
             using (conn = new SqlConnection(str))
             {
@@ -271,8 +282,10 @@ namespace asm_DangKi
                 DataSet dataSet = new DataSet();
                 SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(_adapter);
                 _adapter.Fill(dataSet, "HoaDon");
+                dgv_DonHang.DataSource = dataSet.Tables["HoaDon"];
                 DataRow dataRow = dataSet.Tables["HoaDon"].NewRow();
-                dataRow["MaHoaDon"] = txt_MaHoaDon.Text;
+                dataRow["MaHoaDon"] = "HD" + dgv_DonHang.Rows.Count.ToString("D3");
+                txt_MaHoaDon.Text = "HD" + dgv_DonHang.Rows.Count.ToString("D3");
                 dataRow["MaDoiTac"] = cbo_TenDoiTac.SelectedValue.ToString();
                 DateTime dateTime = dtm_NgayTaoHoaDon.Value;
                 dataRow["NgayTaoHoaDon"] = dateTime.ToString("yyyy/MM/dd");
@@ -282,9 +295,6 @@ namespace asm_DangKi
                 dataSet.Tables["HoaDon"].Rows.Add(dataRow);
                 _adapter.Update(dataSet.Tables["HoaDon"]);
                 LoadDatagridviewHoaDon();
-
-
-
             }
         }
 
@@ -350,7 +360,7 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
                 LoadDatagridviewHoaDon();
                 txt_TongTienHoaDon.Text = (tongTien + tongTienDonHang).ToString();
-            } 
+            }
 
         }
 
@@ -398,7 +408,6 @@ namespace asm_DangKi
 
                     btn_ThanhToan.Enabled = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -425,7 +434,7 @@ namespace asm_DangKi
             try
             {
                 DialogResult result = MessageBox.Show("Bạn có muốn xoá không !!!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if ( result == DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     XoaSanPhamTrongDonHang();
                     SoLuongSauKhiXoaSanPhamTrongDonHang();
@@ -434,8 +443,8 @@ namespace asm_DangKi
                     btn_SuaDonHang.Enabled = false;
                     btn_ThemVaoDonHang.Enabled = true;
                     btn_XoaDonHang.Enabled = false;
-                    int tongTien = int.Parse(txt_TongTienHoaDon.Text); 
-                    if ( tongTien == 0 )
+                    int tongTien = int.Parse(txt_TongTienHoaDon.Text);
+                    if (tongTien == 0)
                     {
                         btn_ThanhToan.Enabled = false;
                     }
@@ -458,7 +467,7 @@ namespace asm_DangKi
         {
             try
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_ThonTinDonHangSanPham.Rows.Count - 1)
                 {
                     using (conn = new SqlConnection(str))
                     {
@@ -486,7 +495,7 @@ namespace asm_DangKi
             {
                 MessageBox.Show("Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         //=========================================
@@ -570,13 +579,13 @@ namespace asm_DangKi
         {
             try
             {
-                DialogResult result = MessageBox.Show("Bạn có muốn sửa không !!!" , "Thông báo" , MessageBoxButtons.OKCancel , MessageBoxIcon.Question );
+                DialogResult result = MessageBox.Show("Bạn có muốn sửa không !!!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     SoLuongSauKhiSuaSanPhamTrongDonHang();
                     TongGiaSauKhiSuaSanPhamTrongDonHang();
                     SuaSanPhamTrongDonHang();
-                    
+
                     btn_SuaDonHang.Enabled = false;
                     btn_ThanhToan.Enabled = true;
                     btn_ThemVaoDonHang.Enabled = true;
@@ -621,7 +630,7 @@ namespace asm_DangKi
 
         public void SoLuongSauKhiSuaSanPhamTrongDonHang()
         {
-            int soLuong = 0; 
+            int soLuong = 0;
             int soLuongTonKho = int.Parse(txt_HangTonKho.Text);
             int soLuongMoi = int.Parse(txt_SoLuong.Text);
 
@@ -643,20 +652,20 @@ namespace asm_DangKi
             int khoangChenhLech = 0;
             int soLuongConLai = 0;
 
-            if ( soLuong < soLuongMoi)
+            if (soLuong < soLuongMoi)
             {
                 khoangChenhLech = soLuongMoi - soLuong;
                 soLuongConLai = soLuongTonKho - khoangChenhLech;
-                CapNhatSoLuong(soLuongConLai); 
+                CapNhatSoLuong(soLuongConLai);
             }
-            else if ( soLuong > soLuongMoi)
+            else if (soLuong > soLuongMoi)
             {
-                khoangChenhLech = soLuong - soLuongMoi; 
+                khoangChenhLech = soLuong - soLuongMoi;
                 soLuongConLai = soLuongTonKho + khoangChenhLech;
-                CapNhatSoLuong(soLuongConLai) ;
+                CapNhatSoLuong(soLuongConLai);
             }
 
-        } 
+        }
         //---------------------------------------------------                                          
         public void CapNhatSoLuong(int soLuongConLai)
         {
@@ -707,25 +716,25 @@ namespace asm_DangKi
                 }
             } // lấy giá trị tổng tiền ban đầu của hoá đơn 
 
-            int khoangChenhLech = 0 ; 
-            int tongTienHoaDonMoi = 0 ; 
-            if ( tongGiaCu < tongGiaMoi)
+            int khoangChenhLech = 0;
+            int tongTienHoaDonMoi = 0;
+            if (tongGiaCu < tongGiaMoi)
             {
                 khoangChenhLech = tongGiaMoi - tongGiaCu;
                 tongTienHoaDonMoi = tongGiaHoaDon + khoangChenhLech;
-                CapNhatGiaTien(tongTienHoaDonMoi); 
+                CapNhatGiaTien(tongTienHoaDonMoi);
             }
-            else if ( tongGiaCu > tongGiaMoi)
+            else if (tongGiaCu > tongGiaMoi)
             {
                 khoangChenhLech = tongGiaCu - tongGiaMoi;
                 tongTienHoaDonMoi = tongGiaHoaDon - khoangChenhLech;
-                CapNhatGiaTien(tongTienHoaDonMoi); 
+                CapNhatGiaTien(tongTienHoaDonMoi);
             }
             LoadDatagridviewHoaDon();
 
         }
         //------------------------------------------------------
-        public void CapNhatGiaTien( int tongTienHoaDonMoi)
+        public void CapNhatGiaTien(int tongTienHoaDonMoi)
         {
             using (conn = new SqlConnection(str))
             {
@@ -750,7 +759,7 @@ namespace asm_DangKi
 
                 btn_TaoHoaDon.Show();
 
-                txt_MaHoaDon.ReadOnly = false; 
+                txt_MaHoaDon.ReadOnly = true;
 
                 txt_MaHoaDon.Clear();
                 txt_HangTonKho.Clear();
@@ -810,12 +819,20 @@ namespace asm_DangKi
                 using (conn = new SqlConnection(str))
                 {
                     dgv_GiaoDich.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                    string query = $"SELECT * FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon ";
+                    string query = $"SELECT GiaoDich.MaGiaoDich , HoaDon.MaHoaDon , HoaDon.MaDoiTac , HoaDon.NgayTaoHoaDon , HoaDon.TongTien , HoaDon.NVTaoDon FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon  ";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     _adapter.Fill(dt);
                     dgv_GiaoDich.DataSource = dt;
+
+                    // đổi tên các cột
+                    dgv_GiaoDich.Columns[0].HeaderText = "Số TT";
+                    dgv_GiaoDich.Columns[1].HeaderText = "Mã Hoá Đơn";
+                    dgv_GiaoDich.Columns[2].HeaderText = "Đối Tác";
+                    dgv_GiaoDich.Columns[3].HeaderText = "Ngày Tạo";
+                    dgv_GiaoDich.Columns[4].HeaderText = "Tổng Tiền";
+                    dgv_GiaoDich.Columns[5].HeaderText = "Nhân Viên";
                 }
             }
             catch (Exception ex)
@@ -831,11 +848,7 @@ namespace asm_DangKi
         {
             try
             {
-                if (e.RowIndex == -1)
-                {
-
-                }
-                else
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_GiaoDich.Rows.Count - 1)
                 {
                     string sql;
                     using (conn = new SqlConnection(str))
@@ -860,20 +873,33 @@ namespace asm_DangKi
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
                         dgv_ThongTinSanPhamGiaoDich.DataSource = dt;
+
+                        // đổi tên các cột
+                        dgv_ThongTinSanPhamGiaoDich.Columns[0].HeaderText = "Số TT"; 
+                        dgv_ThongTinSanPhamGiaoDich.Columns[1].HeaderText = "Số Lượng"; 
+                        dgv_ThongTinSanPhamGiaoDich.Columns[2].HeaderText = "Tên Sản Phẩm"; 
+                        dgv_ThongTinSanPhamGiaoDich.Columns[3].HeaderText = "Giá Bán"; 
+                        dgv_ThongTinSanPhamGiaoDich.Columns[4].HeaderText = "Tổng Tiền"; 
+                        dgv_ThongTinSanPhamGiaoDich.Columns[5].HeaderText = "Tình Trạng"; 
                     }
 
-                    using ( conn = new SqlConnection(str))
+                    using (conn = new SqlConnection(str))
                     {
                         dgv_ThongTinDoiTac.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                        string query = $"SELECT DoiTac.TenDoiTac , DoiTac.DiaChi , DoiTac.SoDT , DoiTac.Email FROM HoaDon INNER JOIN DoiTac ON HoaDon.MaDoiTac = DoiTac.MaDoiTac where MaHoaDon = '{sql}'"; 
+                        string query = $"SELECT DoiTac.TenDoiTac , DoiTac.DiaChi , DoiTac.SoDT , DoiTac.Email FROM HoaDon INNER JOIN DoiTac ON HoaDon.MaDoiTac = DoiTac.MaDoiTac where MaHoaDon = '{sql}'";
                         SqlCommand cmd = new SqlCommand(query, conn);
-                        SqlDataAdapter adapter = new SqlDataAdapter(cmd); 
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-                        dgv_ThongTinDoiTac.DataSource = dt; 
+                        dgv_ThongTinDoiTac.DataSource = dt;
+
+                        // đổi tên các cột
+                        dgv_ThongTinDoiTac.Columns[0].HeaderText = "Tên Đối Tác"; 
+                        dgv_ThongTinDoiTac.Columns[1].HeaderText = "Địa Chỉ"; 
+                        dgv_ThongTinDoiTac.Columns[2].HeaderText = "Số Điện Thoại"; 
+                        dgv_ThongTinDoiTac.Columns[3].HeaderText = "Email"; 
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -892,7 +918,7 @@ namespace asm_DangKi
                 string query = "SELECT * FROM HoaDon INNER JOIN GiaoDich ON HoaDon.MaHoaDon = GiaoDich.MaHoaDon";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable(); 
+                DataTable dt = new DataTable();
                 dataAdapter.Fill(dt);
 
                 IWorkbook wb = new XSSFWorkbook();
@@ -917,18 +943,19 @@ namespace asm_DangKi
                 using (var fileStream = new FileStream("DoanhThu.xlsx", FileMode.Create, FileAccess.Write))
                 {
                     wb.Write(fileStream);
-                } 
+                }
             }
 
             // xoá toàn bộ dữ liệu trong bảng giao dịch sau khi xuất file
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
-                string query = "TRUNCATE TABLE GiaoDich"; 
-                SqlCommand cmd = new SqlCommand( query , conn );    
+                string query = "TRUNCATE TABLE GiaoDich";
+                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.ExecuteNonQuery();
             }
 
+            // xoá bảng hoá đơn sản phẩm
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -937,6 +964,16 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
             }
 
+            // xoá bảng hoá đơn sản phẩm
+            using (conn = new SqlConnection(str))
+            {
+                conn.Open();
+                string query = "TRUNCATE TABLE HoaDon_dsSanPham";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+
+            // xoá bảng hoá đơn
             using (conn = new SqlConnection(str))
             {
                 conn.Open();
@@ -945,7 +982,7 @@ namespace asm_DangKi
                 cmd.ExecuteNonQuery();
             }
 
-            txt_TongDoanhThu.Clear(); 
+            txt_TongDoanhThu.Clear();
         }
 
         //=========================================
@@ -979,12 +1016,13 @@ namespace asm_DangKi
         {
             try
             {
-                DialogResult result = MessageBox.Show("Bạn các muốn xuất file không !!!!\nKhi xuất file sẽ xoá toàn bộ dữ liệu trong SQL" , "Thông báo" , MessageBoxButtons.OKCancel , MessageBoxIcon.Question);
-                if ( result == DialogResult.OK)
+                DialogResult result = MessageBox.Show("Bạn các muốn xuất file không !!!!\nKhi xuất file sẽ xoá toàn bộ dữ liệu trong SQL", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
                 {
                     XuatFileExcel();
                     MessageBox.Show("Xuất file thành công", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                     dgv_ThongTinSanPhamGiaoDich.DataSource = null;
+                    dgv_ThongTinDoiTac.DataSource = null;
                     LoadBangGiaoDich();
                 }
             }
@@ -999,8 +1037,8 @@ namespace asm_DangKi
         // xử lý sự kiện huỷ khi click vào button huy
         private void btn_Huy_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có muốn huỷ không !!!!" , "Thông báo" , MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if ( result == DialogResult.OK)
+            DialogResult result = MessageBox.Show("Bạn có muốn huỷ không !!!!", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK)
             {
                 HuyHoaDon();
             }
@@ -1016,7 +1054,7 @@ namespace asm_DangKi
                 conn.Open();
                 string query = "DELETE FROM HoaDon_dsSanPham where MaHoaDon = @ma";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ma" , txt_MaHoaDon.Text);
+                cmd.Parameters.AddWithValue("@ma", txt_MaHoaDon.Text);
                 cmd.ExecuteNonQuery();
             }
 
@@ -1045,6 +1083,7 @@ namespace asm_DangKi
             txt_DonGia.Clear();
 
             btn_Huy.Hide();
+            txt_MaHoaDon.ReadOnly = true; 
 
             btn_SuaDonHang.Enabled = false;
             btn_ThanhToan.Enabled = false;
@@ -1059,7 +1098,7 @@ namespace asm_DangKi
         {
             try
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.RowIndex < dgv_DonHang.Rows.Count - 1)
                 {
                     using (conn = new SqlConnection(str))
                     {
@@ -1073,7 +1112,7 @@ namespace asm_DangKi
                         DataRow dataRow = dataSet.Tables["HoaDon"].Rows[e.RowIndex];
                         cbo_NhanVien.SelectedValue = dataRow["NVTaoDon"].ToString();
                         cbo_TenDoiTac.SelectedValue = dataRow["MaDoiTac"].ToString();
-                        dtm_NgayTaoHoaDon.Text = dataRow["NgayTaoHoaDon"].ToString(); 
+                        dtm_NgayTaoHoaDon.Text = dataRow["NgayTaoHoaDon"].ToString();
                     }
                 }
             }

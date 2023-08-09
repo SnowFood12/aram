@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.txt_MatKhauCu = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_ThayDoiMatKhau = new System.Windows.Forms.Button();
@@ -42,28 +40,6 @@
             this.chk_HienThiMK = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.err_kiemTra)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txt_MatKhauCu
-            // 
-            this.txt_MatKhauCu.BackColor = System.Drawing.Color.White;
-            this.txt_MatKhauCu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MatKhauCu.Location = new System.Drawing.Point(288, 84);
-            this.txt_MatKhauCu.Name = "txt_MatKhauCu";
-            this.txt_MatKhauCu.Size = new System.Drawing.Size(293, 36);
-            this.txt_MatKhauCu.TabIndex = 19;
-            this.txt_MatKhauCu.UseSystemPasswordChar = true;
-            this.txt_MatKhauCu.TextChanged += new System.EventHandler(this.txt_MatKhauCu_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(39, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 26);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Mật khẩu cũ";
             // 
             // label4
             // 
@@ -88,10 +64,10 @@
             // btn_ThayDoiMatKhau
             // 
             this.btn_ThayDoiMatKhau.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_ThayDoiMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_ThayDoiMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ThayDoiMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ThayDoiMatKhau.ForeColor = System.Drawing.Color.Black;
-            this.btn_ThayDoiMatKhau.Location = new System.Drawing.Point(316, 334);
+            this.btn_ThayDoiMatKhau.Location = new System.Drawing.Point(373, 298);
             this.btn_ThayDoiMatKhau.Name = "btn_ThayDoiMatKhau";
             this.btn_ThayDoiMatKhau.Size = new System.Drawing.Size(183, 40);
             this.btn_ThayDoiMatKhau.TabIndex = 15;
@@ -103,7 +79,7 @@
             // 
             this.txt_MatKhauMoi.BackColor = System.Drawing.Color.White;
             this.txt_MatKhauMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MatKhauMoi.Location = new System.Drawing.Point(288, 161);
+            this.txt_MatKhauMoi.Location = new System.Drawing.Point(328, 129);
             this.txt_MatKhauMoi.Name = "txt_MatKhauMoi";
             this.txt_MatKhauMoi.Size = new System.Drawing.Size(293, 36);
             this.txt_MatKhauMoi.TabIndex = 14;
@@ -115,17 +91,17 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(39, 165);
+            this.label2.Location = new System.Drawing.Point(38, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 26);
+            this.label2.Size = new System.Drawing.Size(143, 26);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Tên đăng nhập mới";
+            this.label2.Text = "Mật khẩu mới";
             // 
             // txt_XacNhanMatKhau
             // 
             this.txt_XacNhanMatKhau.BackColor = System.Drawing.Color.White;
             this.txt_XacNhanMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_XacNhanMatKhau.Location = new System.Drawing.Point(288, 233);
+            this.txt_XacNhanMatKhau.Location = new System.Drawing.Point(328, 201);
             this.txt_XacNhanMatKhau.Name = "txt_XacNhanMatKhau";
             this.txt_XacNhanMatKhau.Size = new System.Drawing.Size(293, 36);
             this.txt_XacNhanMatKhau.TabIndex = 21;
@@ -137,11 +113,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(39, 239);
+            this.label1.Location = new System.Drawing.Point(38, 203);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 26);
+            this.label1.Size = new System.Drawing.Size(200, 26);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Mật khẩu";
+            this.label1.Text = "Xác nhận mật khẩu";
             // 
             // err_kiemTra
             // 
@@ -151,7 +127,7 @@
             // 
             this.chk_HienThiMK.AutoSize = true;
             this.chk_HienThiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_HienThiMK.Location = new System.Drawing.Point(44, 344);
+            this.chk_HienThiMK.Location = new System.Drawing.Point(43, 308);
             this.chk_HienThiMK.Name = "chk_HienThiMK";
             this.chk_HienThiMK.Size = new System.Drawing.Size(204, 30);
             this.chk_HienThiMK.TabIndex = 22;
@@ -167,13 +143,12 @@
             this.Controls.Add(this.chk_HienThiMK);
             this.Controls.Add(this.txt_XacNhanMatKhau);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_MatKhauCu);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_ThayDoiMatKhau);
             this.Controls.Add(this.txt_MatKhauMoi);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_SuaMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
@@ -184,9 +159,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txt_MatKhauCu;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_ThayDoiMatKhau;

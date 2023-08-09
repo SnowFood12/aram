@@ -31,12 +31,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_SuaHoVaTen = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.txt_HoVaTen = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_MatKhau = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.chk_HienThiMK = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label4
@@ -62,51 +61,32 @@
             // btn_SuaHoVaTen
             // 
             this.btn_SuaHoVaTen.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_SuaHoVaTen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btn_SuaHoVaTen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SuaHoVaTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SuaHoVaTen.ForeColor = System.Drawing.Color.Black;
-            this.btn_SuaHoVaTen.Location = new System.Drawing.Point(320, 351);
+            this.btn_SuaHoVaTen.Location = new System.Drawing.Point(358, 351);
             this.btn_SuaHoVaTen.Name = "btn_SuaHoVaTen";
             this.btn_SuaHoVaTen.Size = new System.Drawing.Size(183, 40);
             this.btn_SuaHoVaTen.TabIndex = 12;
-            this.btn_SuaHoVaTen.Text = "Lưu";
+            this.btn_SuaHoVaTen.Text = "Lưu thay đổi";
             this.btn_SuaHoVaTen.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(267, 204);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(293, 36);
-            this.textBox2.TabIndex = 11;
+            this.btn_SuaHoVaTen.Click += new System.EventHandler(this.btn_SuaHoVaTen_Click);
             // 
             // txt_HoVaTen
             // 
             this.txt_HoVaTen.BackColor = System.Drawing.Color.White;
             this.txt_HoVaTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_HoVaTen.Location = new System.Drawing.Point(267, 127);
+            this.txt_HoVaTen.Location = new System.Drawing.Point(310, 135);
             this.txt_HoVaTen.Name = "txt_HoVaTen";
             this.txt_HoVaTen.Size = new System.Drawing.Size(293, 36);
             this.txt_HoVaTen.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(50, 204);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 26);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Họ và tên mới";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(50, 127);
+            this.label1.Location = new System.Drawing.Point(50, 135);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 26);
             this.label1.TabIndex = 8;
@@ -116,7 +96,7 @@
             // 
             this.txt_MatKhau.BackColor = System.Drawing.Color.White;
             this.txt_MatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MatKhau.Location = new System.Drawing.Point(267, 279);
+            this.txt_MatKhau.Location = new System.Drawing.Point(310, 218);
             this.txt_MatKhau.Name = "txt_MatKhau";
             this.txt_MatKhau.Size = new System.Drawing.Size(293, 36);
             this.txt_MatKhau.TabIndex = 16;
@@ -126,30 +106,42 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(50, 289);
+            this.label5.Location = new System.Drawing.Point(50, 221);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 26);
             this.label5.TabIndex = 15;
             this.label5.Text = "Mật khẩu";
+            // 
+            // chk_HienThiMK
+            // 
+            this.chk_HienThiMK.AutoSize = true;
+            this.chk_HienThiMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_HienThiMK.Location = new System.Drawing.Point(55, 361);
+            this.chk_HienThiMK.Name = "chk_HienThiMK";
+            this.chk_HienThiMK.Size = new System.Drawing.Size(204, 30);
+            this.chk_HienThiMK.TabIndex = 27;
+            this.chk_HienThiMK.Text = "Hiển thị mật khẩu";
+            this.chk_HienThiMK.UseVisualStyleBackColor = true;
+            this.chk_HienThiMK.CheckedChanged += new System.EventHandler(this.chk_HienThiMK_CheckedChanged);
             // 
             // frm_HoVaTen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 466);
+            this.Controls.Add(this.chk_HienThiMK);
             this.Controls.Add(this.txt_MatKhau);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_SuaHoVaTen);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txt_HoVaTen);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_HoVaTen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_HoVaTen";
+            this.Load += new System.EventHandler(this.frm_HoVaTen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,11 +152,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_SuaHoVaTen;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txt_HoVaTen;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_MatKhau;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox chk_HienThiMK;
     }
 }

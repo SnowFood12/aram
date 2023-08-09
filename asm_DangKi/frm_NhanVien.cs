@@ -17,32 +17,48 @@ namespace asm_DangKi
         public frm_NhanVien()
         {
             InitializeComponent();
+
         }
 
         string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null; // khai báo biến liên kết 
 
+        public static string TenDangNhapDangNhap { get; set; }
+
         public void LoadData()
         {
             try
             {
-                conn = new SqlConnection(str);
-                conn.Open();
-                txt_MatKhau.UseSystemPasswordChar = true;
-                string query = "SELECT TenDangNhap, SoDienThoai, HoVaTen, Email, MatKhau FROM TaiKhoan";
-                SqlCommand cmd = new SqlCommand(query, conn);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                using (SqlConnection conn = new SqlConnection(str))
                 {
-                    lbl_taiKhoan.Text = reader["TenDangNhap"].ToString();
-                    lbl_soDienThoai.Text = reader["SoDienThoai"].ToString();
-                    lbl_hoVaTen.Text = reader["HoVaTen"].ToString();
-                    lbl_Email.Text = reader["Email"].ToString();
-                    txt_MatKhau.Text = reader["MatKhau"].ToString();
-                }
+                    conn.Open();
 
-                reader.Close();
+                    txt_MatKhau.UseSystemPasswordChar = true;
+
+                    string query = "SELECT TenDangNhap, SoDienThoai, HoVaTen, Email, MatKhau FROM TaiKhoan WHERE TenDangNhap = @tenDangNhap";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@tenDangNhap", TenDangNhapDangNhap);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                lbl_taiKhoan.Text = reader["TenDangNhap"].ToString();
+                                txt_soDienThoai.Text = reader["SoDienThoai"].ToString();
+                                txt_hoVaTen.Text = reader["HoVaTen"].ToString();
+                                txt_Email.Text = reader["Email"].ToString();
+                                txt_MatKhau.Text = reader["MatKhau"].ToString();
+                                frm_SoDienThoai.TenDangNhaps = lbl_taiKhoan.Text;
+                                frm_HoVaTen.TenDangNhapHoVaTen = lbl_taiKhoan.Text;
+                                //frm_Email.TenDangNhapEmail = lbl_taiKhoan.Text;
+
+                            }
+                        }
+                    }
+
+
+                }
             }
             catch (Exception ex)
             {
@@ -50,34 +66,7 @@ namespace asm_DangKi
                 MessageBox.Show(ex.Message);
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void lbl_SuaTenDangNhap_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_SuaMatKhau_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_suaTenDangNhap_Click(object sender, EventArgs e)
-        {
-            frm_TenDangNhap TenDangNhap = new frm_TenDangNhap();
-            TenDangNhap.Show();
-            this.Hide();
-
-
-        }
-
-        private void lbl_tenDangNhap_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_SuaMatKhau_Click(object sender, EventArgs e)
         {
@@ -93,12 +82,6 @@ namespace asm_DangKi
             this.Hide();
         }
 
-
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
         private void frm_NhanVien_Load(object sender, EventArgs e)
         {
 
@@ -107,10 +90,6 @@ namespace asm_DangKi
                 conn = new SqlConnection(str);
                 conn.Open();
                 LoadData();
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -169,6 +148,9 @@ namespace asm_DangKi
 
         private void btn_SuaSoDienThoai_Click(object sender, EventArgs e)
         {
+            frm_TrangChu trangChu = new frm_TrangChu();
+            trangChu.Hide(); // Ẩn form TrangChu
+
             frm_SoDienThoai sdt = new frm_SoDienThoai();
             sdt.Show();
             this.Hide();

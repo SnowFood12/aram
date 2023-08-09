@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,38 +27,10 @@ namespace asm_DangKi
             this.parentForm = parentForm; // Gán form cha (frm_TrangChu) cho thuộc tính parentForm
         }
 
-        string str = "Data Source=LAPTOP-JAKJA372\\TAIMAIKHONGDUOC;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
+
+        string str = "Data Source=.;Initial Catalog=SNOWFOOD;Integrated Security=True"; // khai báo chuỗi liên kết 
         SqlConnection conn = null;
 
-        public void LoadForm()
-        {
-            try
-            {
-
-
-                conn = new SqlConnection(str);
-                conn.Open();
-
-                string xuatSDT = @"SELECT Email  FROM TaiKhoan";
-
-                SqlCommand cmd = new SqlCommand(xuatSDT, conn);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    txt_EmailCu.Text = reader["Email"].ToString();
-                }
-                reader.Close();
-
-                txt_EmailMoi.Text = "";
-                txt_MatKhau.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi rồi ");
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void chk_HienThiMK_CheckedChanged(object sender, EventArgs e)
         {
@@ -84,14 +57,22 @@ namespace asm_DangKi
                     if (string.IsNullOrWhiteSpace(txt_MatKhau.Text) || string.IsNullOrWhiteSpace(txt_EmailMoi.Text))
                     {
                         MessageBox.Show("Vui longfn hập đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                     if (txt_EmailMoi.Text.Length < 8)
                     {
                         MessageBox.Show("Email không hợp lệ!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else if (!Regex.IsMatch(txt_EmailMoi.Text, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"))
+                    {
+                        MessageBox.Show("Email không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                     else if (txt_MatKhau.Text.Length < 5)
                     {
                         MessageBox.Show("Mật khẩu phải >5 kí tự", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
                     else
                     {
@@ -109,7 +90,8 @@ namespace asm_DangKi
                         if (kt > 0)
                         {
                             MessageBox.Show("Thay đổi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadForm();
+                            txt_EmailMoi.Text = "";
+                            txt_MatKhau.Text = "";
                         }
                         else
                         {
@@ -127,24 +109,7 @@ namespace asm_DangKi
 
         private void frm_Email_Load(object sender, EventArgs e)
         {
-            try
-            {
-               
-                conn = new SqlConnection(str);
-                conn.Open();
-                LoadForm();
 
-
-
-                
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Bị lỗi: " + ex.Message);
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -154,5 +119,12 @@ namespace asm_DangKi
             this.Hide();
         }
 
+        private void txt_EmailMoi_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(txt_EmailMoi.Text, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"))
+            {
+                MessageBox.Show("Email không hợp lệ !!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

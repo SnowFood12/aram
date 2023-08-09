@@ -20,6 +20,7 @@ namespace asm_DangKi
 
 
             Application.Run(new frm_DangNhap());
+           
 
         }
     }

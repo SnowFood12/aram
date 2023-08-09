@@ -49,10 +49,11 @@ namespace asm_DangKi
                         if (reader.Read()) // Nếu có dữ liệu tức là mật khẩu hợp lệ
                         {
                             frm_SuaMatKhau suaMatKhau = new frm_SuaMatKhau();
+                            frm_SuaMatKhau.MatKhauCu = txt_matKhau.Text;
                             suaMatKhau.Show();
                             this.Hide();
                         }
-                        else 
+                        else
                         {
                             MessageBox.Show("Sai mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }

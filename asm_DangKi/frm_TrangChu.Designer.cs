@@ -42,7 +42,6 @@ namespace asm_DangKi
             this.panel1 = new System.Windows.Forms.Panel();
             this.iBtn_Thoat = new FontAwesome.Sharp.IconButton();
             this.pal_Logo = new System.Windows.Forms.Panel();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.lab_Content = new System.Windows.Forms.Label();
             this.pal_Menu.SuspendLayout();
             this.pal_Logo.SuspendLayout();
@@ -51,11 +50,11 @@ namespace asm_DangKi
             // lbl_Logo
             // 
             this.lbl_Logo.AutoSize = true;
-            this.lbl_Logo.Font = new System.Drawing.Font("UTM Alexander", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Logo.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Logo.ForeColor = System.Drawing.Color.White;
             this.lbl_Logo.Location = new System.Drawing.Point(12, 30);
             this.lbl_Logo.Name = "lbl_Logo";
-            this.lbl_Logo.Size = new System.Drawing.Size(217, 57);
+            this.lbl_Logo.Size = new System.Drawing.Size(215, 44);
             this.lbl_Logo.TabIndex = 0;
             this.lbl_Logo.Text = "SnowFood";
             // 
@@ -250,7 +249,6 @@ namespace asm_DangKi
             // 
             // pal_Logo
             // 
-            this.pal_Logo.Controls.Add(this.iconButton2);
             this.pal_Logo.Controls.Add(this.lbl_Logo);
             this.pal_Logo.Controls.Add(this.lab_Content);
             this.pal_Logo.Dock = System.Windows.Forms.DockStyle.Top;
@@ -259,30 +257,14 @@ namespace asm_DangKi
             this.pal_Logo.Size = new System.Drawing.Size(294, 130);
             this.pal_Logo.TabIndex = 0;
             // 
-            // iconButton2
-            // 
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.BarChart;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.Location = new System.Drawing.Point(227, 3);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(43, 41);
-            this.iconButton2.TabIndex = 2;
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            // 
             // lab_Content
             // 
             this.lab_Content.AutoSize = true;
-            this.lab_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lab_Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lab_Content.ForeColor = System.Drawing.Color.White;
-            this.lab_Content.Location = new System.Drawing.Point(74, 101);
+            this.lab_Content.Location = new System.Drawing.Point(65, 91);
             this.lab_Content.Name = "lab_Content";
-            this.lab_Content.Size = new System.Drawing.Size(126, 29);
+            this.lab_Content.Size = new System.Drawing.Size(108, 26);
             this.lab_Content.TabIndex = 0;
             this.lab_Content.Text = "Trang chủ";
             // 
@@ -291,7 +273,7 @@ namespace asm_DangKi
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1672, 847);
+            this.ClientSize = new System.Drawing.Size(1732, 847);
             this.Controls.Add(this.pal_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IsMdiContainer = true;
@@ -313,7 +295,6 @@ namespace asm_DangKi
         private FontAwesome.Sharp.IconButton iBtn_Home;
         private System.Windows.Forms.Panel pal_Menu;
         private System.Windows.Forms.Panel pal_Logo;
-        private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label lab_Content;
         private FontAwesome.Sharp.IconButton iBtn_SanPham;
         private FontAwesome.Sharp.IconButton iBtn_Thoat;
